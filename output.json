@@ -1,24 +1,28 @@
 {
-    "https://multiservice.com.ua/remont-smartfonov.html": {
-        "errors": [
-            {
-                "level": "SEVERE",
-                "message": "https://multiservice.com.ua/remont-smartfonov.html 1315:12 Uncaught TypeError: $(...).ready is not a function",
-                "timestamp": 1608713069222,
-                "type": ""
-            },
-            {
-                "level": "SEVERE",
-                "message": "https://widgets.binotel.com/calltracking/widgets/uoddzyku7ex2flf641o2.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
-                "timestamp": 1608713069470,
-                "type": ""
-            },
-            {
-                "level": "SEVERE",
-                "message": "https://widgets.binotel.com/getcall/widgets/coyppvk6v4p4c46vdlod.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
-                "timestamp": 1608713069470,
-                "type": ""
+    "sites": [
+        {
+            "https://eservice.od.ua/telefony/zamena-displeya-telefona/": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?u8vidh - Failed to load resource: the server responded with a status of 403 (Forbidden)",
+                        "timestamp": 1608720535909,
+                        "type": ""
+                    }
+                ]
             }
-        ]
-    }
+        },
+        {
+            "https://kosa-service.com.ua/g1642516-remont-personalnyh-kompyuterov": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://cdn.callbackhunter.com/cbh.js?hunter_code=%3Cscript%20type=%22text/javascript%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20src=%22//cdn.callbackhunter.com/cbh.js?hunter_code=82c56787cb12066c5d548ef42a674c34%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22%20charset=%22UTF-8%22%3E%3C/script%3E 4:26475 \"Widget load error: 2\"",
+                        "timestamp": 1608720550821,
+                        "type": ""
+                    }
+                ]
+            }
+        }
+    ]
 }
