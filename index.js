@@ -9,7 +9,7 @@ siteQuery = siteQuery.replace(/\r/g, '');
 siteQuery = siteQuery.split('\n');
 for (let i of siteQuery) {
   let URL = '';
-  // проверка на домен
+  // проверка на домен и если надо добавляем https://
   if (i.match(/^https:\/\//)) URL = i;
   else URL = 'https://' + i + '/';
 
@@ -71,6 +71,7 @@ for (let i of siteQuery) {
   })();
 
   async function processUrl(URL) {
+    console.log(URL);
     let driver = await new Builder().forBrowser('chrome').build();
     try {
       await driver.get(URL);
