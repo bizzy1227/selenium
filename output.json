@@ -1,0 +1,24 @@
+{
+    "https://multiservice.com.ua/remont-smartfonov.html": {
+        "errors": [
+            {
+                "level": "SEVERE",
+                "message": "https://multiservice.com.ua/remont-smartfonov.html 1315:12 Uncaught TypeError: $(...).ready is not a function",
+                "timestamp": 1608713069222,
+                "type": ""
+            },
+            {
+                "level": "SEVERE",
+                "message": "https://widgets.binotel.com/calltracking/widgets/uoddzyku7ex2flf641o2.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
+                "timestamp": 1608713069470,
+                "type": ""
+            },
+            {
+                "level": "SEVERE",
+                "message": "https://widgets.binotel.com/getcall/widgets/coyppvk6v4p4c46vdlod.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
+                "timestamp": 1608713069470,
+                "type": ""
+            }
+        ]
+    }
+}
