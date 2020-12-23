@@ -1,24 +1,1159 @@
 {
     "sites": [
         {
-            "https://eservice.od.ua/telefony/zamena-displeya-telefona/": {
+            "https://maxenrajmeizaer.info/": {
+                "errors": []
+            }
+        },
+        {
+            "https://maxeqrjampiniaer.info/": {
+                "errors": []
+            }
+        },
+        {
+            "https://maxenrajmeizaer.info/home/agreement": {
                 "errors": [
                     {
                         "level": "SEVERE",
-                        "message": "https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?u8vidh - Failed to load resource: the server responded with a status of 403 (Forbidden)",
-                        "timestamp": 1608720535909,
+                        "message": "https://maxenrajmeizaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731049721,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731049721,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731049721,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731049919,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731049919,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731049919,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731049919,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/home/agreement 367:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731049920,
                         "type": ""
                     }
                 ]
             }
         },
         {
-            "https://kosa-service.com.ua/g1642516-remont-personalnyh-kompyuterov": {
+            "https://maxenrajmeizaer.info/home/risk": {
                 "errors": [
                     {
                         "level": "SEVERE",
-                        "message": "https://cdn.callbackhunter.com/cbh.js?hunter_code=%3Cscript%20type=%22text/javascript%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20src=%22//cdn.callbackhunter.com/cbh.js?hunter_code=82c56787cb12066c5d548ef42a674c34%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22%20charset=%22UTF-8%22%3E%3C/script%3E 4:26475 \"Widget load error: 2\"",
-                        "timestamp": 1608720550821,
+                        "message": "https://maxenrajmeizaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052078,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052146,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052146,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052172,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052173,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052173,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052173,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052343,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731052879,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053093,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053653,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053939,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/home/risk 173:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731053940,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxeramcmiaer.info/": {
+                "errors": []
+            }
+        },
+        {
+            "https://maxerapmimiaer.info/": {
+                "errors": []
+            }
+        },
+        {
+            "https://maxeqrjampiniaer.info/home/agreement": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053275,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053275,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053275,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053275,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053275,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053275,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053275,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053621,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053626,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731053639,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731054201,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731054703,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731055100,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731055331,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/home/agreement 367:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731055342,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxeqrjampiniaer.info/home/risk": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056202,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056202,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056202,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056601,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056601,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056601,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056601,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056937,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731057165,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731057503,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731058027,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/home/risk 173:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731058111,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxenrajmeizaer.info/home/policy": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056034,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056068,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056069,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056069,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056069,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056069,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056069,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056370,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056371,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731056371,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731057512,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731057616,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731058324,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731058665,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxenrajmeizaer.info/home/policy 235:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731058666,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxerasmiaer.info/": {
+                "errors": []
+            }
+        },
+        {
+            "https://maxeqrjampiniaer.info/home/policy": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061217,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061217,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061217,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061404,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061404,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061404,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061404,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731061638,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062038,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062614,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062832,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeqrjampiniaer.info/home/policy 235:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731062833,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxeramcmiaer.info/home/agreement": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062827,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062827,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062827,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731063065,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731063065,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731063065,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731063120,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/home/agreement 367:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731063120,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxerapmimiaer.info/home/agreement": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062037,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062054,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062054,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062054,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062054,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062054,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062054,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062268,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062269,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062269,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731062853,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731063366,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731063603,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731063827,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/home/agreement 367:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731063863,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxerasmiaer.info/home/agreement": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731064662,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731064662,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731064662,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731064926,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731064926,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731064926,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731064926,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/home/agreement 367:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731064926,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxeramcmiaer.info/home/risk": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731066826,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731066826,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731066826,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731067036,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731067036,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731067036,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731067036,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731067186,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731067767,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731067980,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068184,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/home/risk 173:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731068237,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxerasmiaer.info/home/risk": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068137,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068137,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068151,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068288,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068288,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068303,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068303,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731068621,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069004,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069212,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069429,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/home/risk 173:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731069446,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxerapmimiaer.info/home/risk": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069796,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069797,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069797,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069946,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069946,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069946,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069946,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/home/risk 173:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731069947,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxerapmimiaer.info/home/policy": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069351,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069351,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069351,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069616,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069616,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069616,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069616,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069977,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731070474,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731070663,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731070855,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerapmimiaer.info/home/policy 235:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731070870,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxeramcmiaer.info/home/policy": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069692,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069692,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069692,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069947,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069947,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069947,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731069947,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731070051,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731070522,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731070729,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731070926,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxeramcmiaer.info/home/policy 235:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731070940,
+                        "type": ""
+                    }
+                ]
+            }
+        },
+        {
+            "https://maxerasmiaer.info/home/policy": {
+                "errors": [
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/Content/css?v=7TaFCWRaP5-5aDLfUUw1ZKIjCsAwQzjsT5f7mg37HVo1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071605,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/Content/css_custom?v=rfxcD2i6tGX--5BbKWlfourfUis8FntCIieTk3x-q5k1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071613,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071613,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071703,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071703,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071704,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071706,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jquery?v=vC5U_Tp8RN30uo0SNykFjzJcAC7J5IlZNAp5kXgMHww1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731071901,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/bootstrap?v=-ktyuuYVm8reiCqek-REkH9kFQQZ53F1Ay-TXz9RIew1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731072129,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/jqueryval?v=KyQhYRVwcdlz57wYM_44uS1Wf6ZLZRm1Sqgdi6YjJtk1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731072322,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/bundles/js_custom?v=DibtjpPfkzLUnG8Osh9jfNZeLU5Van_8z4F-Up0kH9A1 - Failed to load resource: the server responded with a status of 500 ()",
+                        "timestamp": 1608731072515,
+                        "type": ""
+                    },
+                    {
+                        "level": "SEVERE",
+                        "message": "https://maxerasmiaer.info/home/policy 235:8 Uncaught ReferenceError: $ is not defined",
+                        "timestamp": 1608731072525,
                         "type": ""
                     }
                 ]
