@@ -91,25 +91,25 @@ for (let i of siteQuery) {
           resultObj[URL].errors.push(obj);
         }
     
-        // ничего не делаем если нет ошибок
-        // if (resultObj[URL].errors.length === 0) return;
-  
-        let myJSON;
+        // продолжаем если приоритет ошибок больше не WARNING
+        if (resultObj[URL].errors.length !== 0) {
+          let myJSON;
         
-        fs.readFile('output.json', 'utf8', function readFileCallback(err, data){
-          if (err){
-              console.log(err);
-          } else {
-            myJSON = JSON.parse(data); //now it an object 
-            myJSON.sites.push(resultObj);
-            myJSON = JSON.stringify(myJSON, null, 4);
-    
-            fs.writeFile('output.json', myJSON, function(error){
-              if(error) throw error; // если возникла ошибка
-                          
-              console.log('Запись файла завершена.');
-            });
-        }});
+          fs.readFile('output.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            } else {
+              myJSON = JSON.parse(data); //now it an object 
+              myJSON.sites.push(resultObj);
+              myJSON = JSON.stringify(myJSON, null, 4);
+      
+              fs.writeFile('output.json', myJSON, function(error){
+                if(error) throw error; // если возникла ошибка
+                            
+                console.log('Запись файла завершена.');
+              });
+          }});
+        };
       }
 
       // найти все ссылки этого же сайта 
