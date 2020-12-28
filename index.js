@@ -1,6 +1,7 @@
 const {Builder, By, Key, until} = require('selenium-webdriver');
 const fs = require("fs");
 const winston = require('winston');
+const chrome = require('selenium-webdriver/chrome');
 
 let siteQuery = fs.readFileSync("input.txt", "utf8");
 
@@ -12,20 +13,7 @@ for (let i of siteQuery) {
   if (i.match(/^https:\/\//)) URL = i;
   else URL = 'https://' + i + '/';
 
-  // настройка логера winston
-  const logger = winston.createLogger({
-    level: 'error',
-    format: winston.format.json(),
-    defaultMeta: { service: URL },
-    transports: [
-      //
-      // - Write all logs with level `error` and below to `error.log`
-      // - Write all logs with level `info` and below to `combined.log`
-      //
-      new winston.transports.File({ filename: 'js_console_errors.log', level: 'error' }),
-      // new winston.transports.File({ filename: 'combined.log' }),
-    ],
-  });
+  // maxzeprzajmhiaer.info maxjerkamjiaer.info maxserpazmieaer.info
 
   // добавляем в очередь страницу thanks.php
   processUrl(`${URL}thanks.php`);
@@ -35,8 +23,13 @@ for (let i of siteQuery) {
   })();
 
   async function processUrl(URL) {
+
     console.log('start: ', URL);
-    let driver = await new Builder().forBrowser('chrome').build();
+
+    // '--ignore-certificate-errors', '--ignore-ssl-errors'
+    let driver = await new Builder().forBrowser('chrome')
+    .setChromeOptions(new chrome.Options().addArguments(['ignore-certificate-errors', '--ignore-ssl-errors']).headless())
+    .build();
     try {
       await driver.get(URL);
       // driver.sleep(10000);
@@ -45,36 +38,51 @@ for (let i of siteQuery) {
       let errors = await driver.manage().logs().get('browser');
 
 
+      // настройка логера winston
+      const logger = winston.createLogger({
+        level: 'error',
+        format: winston.format.json(),
+        defaultMeta: { service: URL },
+        transports: [
+          new winston.transports.File({ filename: 'web_console_errors.log', level: 'error' }),
+        ]
+      });
+
+
       // если есть ошибки
       if (errors.length !== 0) {
         resultObj[URL]= {};
         resultObj[URL].errors = [];
         for (let [i, err] of errors.entries()) {
           let obj = new Object(err);
+          logger.log({
+            level: 'error',
+            message: obj.message
+          });
           // если нужно скипать WARNING ошибки
           // if (obj.level.name_ === 'WARNING') continue;
-          resultObj[URL].errors.push(obj);
+          // resultObj[URL].errors.push(obj);
         }
     
         // продолжаем если приоритет ошибок больше WARNING
-        if (resultObj[URL].errors.length !== 0) {
-          let myJSON;
+        // if (resultObj[URL].errors.length !== 0) {
+        //   let myJSON;
         
-          fs.readFile('web_console_errors.json', 'utf8', function readFileCallback(err, data){
-            if (err){
-                console.log(err);
-            } else {
-              myJSON = JSON.parse(data); //now it an object 
-              myJSON.sites.push(resultObj);
-              myJSON = JSON.stringify(myJSON, null, 4);
+        //   fs.readFile('web_console_errors.json', 'utf8', function readFileCallback(err, data){
+        //     if (err){
+        //         console.log(err);
+        //     } else {
+        //       myJSON = JSON.parse(data); //now it an object 
+        //       myJSON.sites.push(resultObj);
+        //       myJSON = JSON.stringify(myJSON, null, 4);
       
-              fs.writeFile('web_console_errors.json', myJSON, function(error){
-                if(error) throw error; // если возникла ошибка
+        //       fs.writeFile('web_console_errors.json', myJSON, function(error){
+        //         if(error) throw error; // если возникла ошибка
                             
-                console.log('Запись файла завершена.');
-              });
-          }});
-        };
+        //         console.log('Запись файла завершена.');
+        //       });
+        //   }});
+        // };
       }
 
       // найти все ссылки этого же сайта 
@@ -86,8 +94,17 @@ for (let i of siteQuery) {
         else if (href.match(URL)) processUrl(href);
       }
     } catch (e) {
+      // настройка логера winston
+      const logger = winston.createLogger({
+        level: 'warn',
+        format: winston.format.json(),
+        defaultMeta: { service: URL },
+        transports: [
+          new winston.transports.File({ filename: 'js_console_errors.log', level: 'warn' }),
+        ]
+      });
       logger.log({
-        level: 'error',
+        level: 'warn',
         message: e.message
       });
     } finally {
