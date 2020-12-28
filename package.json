@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "selenium-webdriver": "^3.6.0"
+    "selenium-webdriver": "^3.6.0",
+    "winston": "^3.3.3"
   }
 }
