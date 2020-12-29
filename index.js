@@ -2,6 +2,7 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
+const sendModule = require('./send_module');
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
@@ -19,7 +20,6 @@ let siteQuery = fs.readFileSync("input.txt", "utf8");
 siteQuery = siteQuery.replace(/\r/g, '');
 siteQuery = siteQuery.split('\n');
 
-
 (async function run() {
   for (let i of siteQuery) {
     let URL = '';
@@ -33,15 +33,16 @@ siteQuery = siteQuery.split('\n');
       await sleep();
     }
     processUrl(URL);
+    sendModule.checkSend(URL);
     await sleep();
   }
 })();
 
 function sleep() {
-  return new Promise(resolve => setTimeout(resolve, getTime()));
+  return new Promise(resolve => setTimeout(resolve, getDelay()));
 }
 
-function getTime() {
+function getDelay() {
   if (fastMode) return 1000;
   else return 10000;
 }
@@ -56,7 +57,9 @@ async function processUrl(URL) {
   .build();
   try {
     await driver.get(URL);
-    driver.sleep(getTime());
+    driver.sleep(getDelay());
+
+    // sendModule.send(driver);
 
     let resultObj = {};
     let errors = await driver.manage().logs().get('browser');
