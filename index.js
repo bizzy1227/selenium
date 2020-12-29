@@ -3,12 +3,16 @@ const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
 
-// проверка установлен ли флаг на работу с thanks.php
-let processThanksPage = false;
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
+
+// проверка установлен ли флаг на работу с thanks.php
+let processThanksPage = false;
 if (myArgs.includes('--with-thanks')) processThanksPage = true;
 
+// проверка установлен ли флаг на быструю работу
+let fastMode = false;
+if (myArgs.includes('--fast')) fastMode = true;
 
 // получаем список сайтов
 let siteQuery = fs.readFileSync("input.txt", "utf8");
@@ -26,15 +30,20 @@ siteQuery = siteQuery.split('\n');
     // добавляем в очередь страницу thanks.php если был установлен флаг --with-thanks
     if (processThanksPage) {
       processUrl(`${URL}thanks.php`);
-      await sleep(10000);
+      await sleep();
     }
     processUrl(URL);
-    await sleep(10000);
+    await sleep();
   }
 })();
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function sleep() {
+  return new Promise(resolve => setTimeout(resolve, getTime()));
+}
+
+function getTime() {
+  if (fastMode) return 1000;
+  else return 10000;
 }
 
 async function processUrl(URL) {
@@ -47,7 +56,7 @@ async function processUrl(URL) {
   .build();
   try {
     await driver.get(URL);
-    driver.sleep(10000);
+    driver.sleep(getTime());
 
     let resultObj = {};
     let errors = await driver.manage().logs().get('browser');
