@@ -54,7 +54,7 @@ const checkSend  = async function(URL) {
     }
 }
 
-async function send (driver, logger, URL) {
+async function send(driver, logger, URL) {
     let firstname = driver.findElement(By.id('first_name'));
     await firstname.sendKeys(Firstname, Key.ENTER);
 
