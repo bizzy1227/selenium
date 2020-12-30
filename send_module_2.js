@@ -18,7 +18,6 @@ const checkSend  = async function(URL) {
           new winston.transports.File({ filename: 'send_form_errors.log', level: 'error' }),
         ]
     });
-
     let driver = await new Builder().forBrowser('chrome')
         .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
         .build();
@@ -27,10 +26,9 @@ const checkSend  = async function(URL) {
         await driver.get(URL);
         driver.sleep(5000);
 
-        // let form = await driver.findElement(By.css('form'));
-
         if (await driver.findElement(By.css('form'))) {
             if (await driver.findElement(By.name('phone_number'))) {
+                // отрабатывает если на странице сраху есть форма со всеми полями для проверки send
                 let firstname = await driver.findElement(By.name('firstname'));
                 await firstname.sendKeys(Firstname);
             
@@ -42,26 +40,20 @@ const checkSend  = async function(URL) {
             
                 let email = await driver.findElement(By.name('email'));
                 await email.sendKeys(Email, Key.ENTER);
+
+                checkLastUrl(driver, logger, URL);
             }
         }
-
-        // console.log('form length: ', await form.getAttribute('length'));
-        // console.log('form: ', await form.getAttribute('action'));
-        // await email.sendKeys(Email, Key.ENTER);
-    
     } catch (e) {
-        // console.log('e.message: ', e.message);
         if (e.message.match(/form"}$/mg)) {
             console.log('site not have form');
-            // тут логика для обратоки страниц без формы
+            // тут логика для обработки страниц без формы
         }
         // попадаем в условие если на странице есть форма но она не имеет поля телефона
         else if (e.message.match(/name="phone_number"]"}$/mg)) {
             console.log('site not have name phone_number');
             try {
                 // в этом блоке try вводим два поля: email и firstname и выполняем отправку (quantinum)
-                // если поля firstname нет
-
                 console.log('in block for quantinum');
 
                 let firstname = await driver.findElement(By.name('firstname'));
@@ -78,7 +70,7 @@ const checkSend  = async function(URL) {
                 let tel = await driver.findElement(By.name('phone_number'));
                 await tel.sendKeys(Tel, Key.ENTER);
 
-  
+                checkLastUrl(driver, logger, URL);
             } catch (e) {
                 // попадаем в этот блок если на странице только 1 поле для email (adcode)
                 if (e.message.match(/name="firstname"]"}$/mg)) {
@@ -90,20 +82,31 @@ const checkSend  = async function(URL) {
 
                     driver.sleep(10000);
 
-                    let firstname = await driver.findElement(By.name('firstname'));
+                    let firstname = await driver.findElement(By.id('first_name'));
+                    //*[@id="first_name"]
                     await firstname.sendKeys(Firstname);
                 
-                    let lastname = await driver.findElement(By.name('lastname'));
+                    let lastname = await driver.findElement(By.id('last_name'));
                     await lastname.sendKeys(Lastname);
                 
-                    let tel = await driver.findElement(By.name('phone_number'));
+                    let tel = await driver.findElement(By.id('phone'));
                     await tel.sendKeys(Tel, Key.ENTER);
+
+                    checkLastUrl(driver, logger, URL);
                 } else {
                     console.log(e);
+                    logger.log({
+                        level: 'error',
+                        message: e.message
+                    });
                 }
             }
         } else {
             console.log(e);
+            logger.log({
+                level: 'error',
+                message: e.message
+            });
         }
            
     } finally {
@@ -111,31 +114,17 @@ const checkSend  = async function(URL) {
     }
 }
 
-// async function send(driver, logger, URL) {
-//     let firstname = await driver.findElement(By.name('firstname'));
-//     await firstname.sendKeys(Firstname);
+async function checkLastUrl(driver, logger, URL) {
+    let currentUrl = await driver.getCurrentUrl();
+    if (await currentUrl.match(/thanks.php$/)) console.log('Test send form done', URL);
+    else {
+        logger.log({
+            level: 'error',
+            message: 'Test send form failed'
+        });
+    }
+}
 
-//     let lastname = await driver.findElement(By.name('lastname'));
-//     await lastname.sendKeys(Lastname);
-
-//     let tel = await driver.findElement(By.name('phone_number'));
-//     await tel.sendKeys(Tel);
-
-//     let email = await driver.findElement(By.name('email'));
-//     await email.sendKeys(Email, Key.ENTER);
-
-//     let currentUrl = await driver.getCurrentUrl();
-//     if (await currentUrl.match(/thanks.php$/)) console.log('Test send form done', URL);
-//     else {
-//         logger.log({
-//             level: 'error',
-//             message: 'Test send form failed'
-//         });
-//     }
-
-//     await driver.quit();
-// }
-
-checkSend('https://adhoecqcode.info/');
+checkSend('https://paettearon.info/');
 
 module.exports.checkSend = checkSend;
