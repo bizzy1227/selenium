@@ -128,3 +128,6 @@ async function checkLastUrl(driver, logger, URL) {
 checkSend('https://paettearon.info/');
 
 module.exports.checkSend = checkSend;
+
+// 1. Почему не работает по name
+// 2. синергия с browserstack (https://www.browserstack.com/docs/automate/selenium/getting-started/nodejs)
