@@ -28,7 +28,7 @@ const checkSend  = async function(URL) {
 
         if (await driver.findElement(By.css('form'))) {
             if (await driver.findElement(By.name('phone_number'))) {
-                // отрабатывает если на странице сраху есть форма со всеми полями для проверки send
+                // отрабатывает если на странице сразу есть форма со всеми полями для проверки send
                 let firstname = await driver.findElement(By.name('firstname'));
                 await firstname.sendKeys(Firstname);
             
@@ -125,7 +125,7 @@ async function checkLastUrl(driver, logger, URL) {
     }
 }
 
-checkSend('https://paettearon.info/');
+checkSend('https://maxzexmzixrqacaer.info/registration.php');
 
 module.exports.checkSend = checkSend;
 

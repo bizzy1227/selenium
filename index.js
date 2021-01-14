@@ -33,7 +33,7 @@ siteQuery = siteQuery.split('\n');
       await sleep();
     }
     processUrl(URL);
-    sendModule.checkSend(URL);
+    // sendModule.checkSend(URL);
     await sleep();
   }
 })();
