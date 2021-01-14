@@ -42,11 +42,14 @@ const checkSend  = async function(URL) {
 }
 
 async function checkForm(driver, URL) {
+    let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
+    // console.log(await form[0].isDisplayed());
 
     // если есть форма
     if (form.length > 0) {
-        fillForm(driver, URL);
+        if (!await form[indexElements].isDisplayed()) indexElements = 1;
+        fillForm(driver, URL, indexElements);
     } 
     else {
     // если нет формы
@@ -60,34 +63,34 @@ async function checkForm(driver, URL) {
     } 
 }
 
-async function fillForm(driver, URL) {
+async function fillForm(driver, URL, i) {
 
     let firstname = await driver.findElements(By.name('firstname'));
     if (firstname.length > 0) {
-        await firstname[0].clear();
-        await firstname[0].sendKeys(Firstname);
+        await firstname[i].clear();
+        await firstname[i].sendKeys(Firstname);
     } 
     
     let lastname = await driver.findElements(By.name('lastname'));
     if (lastname.length > 0) {
-        await lastname[0].clear();
-        await lastname[0].sendKeys(Lastname);
+        await lastname[i].clear();
+        await lastname[i].sendKeys(Lastname);
     }
 
     let tel = await driver.findElements(By.name('phone_number'));
     if (tel.length > 0) {
-        await tel[0].clear();
-        await tel[0].sendKeys(Tel);
+        await tel[i].clear();
+        await tel[i].sendKeys(Tel);
     }
 
     let email = await driver.findElements(By.name('email'));
     if (email.length > 0) {
-        await email[0].clear();
-        await email[0].sendKeys(Email);
+        await email[i].clear();
+        await email[i].sendKeys(Email);
     }
 
-    let submit = await driver.findElement(By.xpath(`//*[@type='submit']`));
-    await submit.click();
+    let submit = await driver.findElements(By.xpath(`//*[@type='submit']`));
+    await submit[i].click();
 
     driver.sleep(10000);
 
@@ -115,6 +118,6 @@ async function checkLastUrl(driver, URL) {
     // }
 }
 
-checkSend('https://mejseshcgfjeawser.info/');
+checkSend('https://adsocmcouode.info/');
 
 module.exports.checkSend = checkSend;
