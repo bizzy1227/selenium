@@ -3,11 +3,6 @@ const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
 
-let Firstname = 'Firstname';
-let Lastname = 'Lastname';
-let Email = 'testmail@gmail.com';
-let Tel = 639113425;
-
 let countRedirect = 0;
 
 
@@ -66,28 +61,16 @@ async function checkForm(driver, URL) {
 async function fillForm(driver, URL, i) {
 
     let firstname = await driver.findElements(By.name('firstname'));
-    if (firstname.length > 0) {
-        await firstname[i].clear();
-        await firstname[i].sendKeys(Firstname);
-    } 
-    
+    setValue('firstname', firstname.length, firstname, i);
+
     let lastname = await driver.findElements(By.name('lastname'));
-    if (lastname.length > 0) {
-        await lastname[i].clear();
-        await lastname[i].sendKeys(Lastname);
-    }
+    setValue('lastname', lastname.length, lastname, i);
 
     let tel = await driver.findElements(By.name('phone_number'));
-    if (tel.length > 0) {
-        await tel[i].clear();
-        await tel[i].sendKeys(Tel);
-    }
+    setValue('tel', tel.length, tel, i);
 
     let email = await driver.findElements(By.name('email'));
-    if (email.length > 0) {
-        await email[i].clear();
-        await email[i].sendKeys(Email);
-    }
+    setValue('email', email.length, email, i);
 
     let submit = await driver.findElements(By.xpath(`//*[@type='submit']`));
     await submit[i].click();
@@ -118,6 +101,20 @@ async function checkLastUrl(driver, URL) {
     // }
 }
 
-checkSend('https://adsocmcouode.info/');
+async function setValue(name, length, element, i) {
+    const userData = {
+        firstname: 'Firstname',
+        lastname: 'Lastname',
+        email: 'testmail@gmail.com',
+        tel: 639113425
+    }
+    if (length > 0) {
+        await element[i].clear();
+        await element[i].sendKeys(userData[name]);
+    } 
+
+}
+
+checkSend('https://mejsehngfseawser.info/');
 
 module.exports.checkSend = checkSend;
