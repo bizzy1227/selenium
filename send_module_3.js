@@ -18,7 +18,6 @@ const logger = winston.createLogger({
 
 const checkSend  = async function(URL) {
 
-
     let driver = await new Builder().forBrowser('chrome')
         .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
         .build();
@@ -84,7 +83,7 @@ async function checkLastUrl(driver, URL) {
     let currentUrl = await driver.getCurrentUrl();
     if (! await currentUrl.match(/thanks.php$/)) {
         countRedirect++;
-        if (countRedirect < 3) fillForm(driver, currentUrl);
+        if (countRedirect < 3) checkForm(driver, currentUrl);
         else {
             console.log(`The limit (${countRedirect}) of clicks on links has been exceeded`, URL);
             countRedirect = 0;
@@ -115,6 +114,6 @@ async function setValue(name, length, element, i) {
 
 }
 
-checkSend('https://mejsehngfseawser.info/');
+checkSend('https://polsfkadziybyzis.pl/');
 
 module.exports.checkSend = checkSend;
