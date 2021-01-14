@@ -2,7 +2,7 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
-const sendModule = require('./send_module');
+const sendModule = require('../send_form/send_module_3');
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
@@ -16,7 +16,7 @@ let fastMode = false;
 if (myArgs.includes('--fast')) fastMode = true;
 
 // получаем список сайтов
-let siteQuery = fs.readFileSync("input.txt", "utf8");
+let siteQuery = fs.readFileSync("../input.txt", "utf8");
 siteQuery = siteQuery.replace(/\r/g, '');
 siteQuery = siteQuery.split('\n');
 
