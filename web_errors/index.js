@@ -2,7 +2,7 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
-const sendModule = require('../send_form/send_module_3');
+// const sendModule = require('../send_form/send_module_3');
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');

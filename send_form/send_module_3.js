@@ -114,6 +114,6 @@ async function setValue(name, length, element, i) {
 
 }
 
-checkSend('https://polsfkadziybyzis.pl/');
+checkSend('https://magxeomizpeper.pl/');
 
 module.exports.checkSend = checkSend;
