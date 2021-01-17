@@ -124,6 +124,7 @@ async function processUrl(URL) {
       else if (href.match(URL)) processUrl(href);
     }
   } catch (e) {
+    console.log(e);
     // настройка логера winston
     const logger = winston.createLogger({
       level: 'warn',
