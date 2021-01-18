@@ -36,6 +36,11 @@ const checkSend  = async function(URL) {
 }
 
 async function checkForm(driver, URL) {
+    /*
+    Тут Можно собирать ошибки консоли
+    
+    
+    */
     let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
     // console.log(await form[0].isDisplayed());
@@ -114,6 +119,6 @@ async function setValue(name, length, element, i) {
 
 }
 
-checkSend('https://magxeomizpeper.pl/');
+// checkSend('https://magxeomizpeper.pl/');
 
 module.exports.checkSend = checkSend;

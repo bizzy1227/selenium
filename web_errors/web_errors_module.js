@@ -1,53 +1,9 @@
 const {Builder, By, Key, until} = require('selenium-webdriver');
-const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
 // const sendModule = require('../send_form/send_module_3');
 
-let myArgs = String(process.argv.slice(2));
-myArgs = myArgs.split(',');
-
-// проверка установлен ли флаг на работу с thanks.php
-let processThanksPage = false;
-if (myArgs.includes('--with-thanks')) processThanksPage = true;
-
-// проверка установлен ли флаг на быструю работу
-let fastMode = false;
-if (myArgs.includes('--fast')) fastMode = true;
-
-// получаем список сайтов
-let siteQuery = fs.readFileSync("../input.txt", "utf8");
-siteQuery = siteQuery.replace(/\r/g, '');
-siteQuery = siteQuery.split('\n');
-
-(async function run() {
-  for (let i of siteQuery) {
-    let URL = '';
-    // проверка на домен и если надо добавляем https://
-    if (i.match(/^https:\/\//)) URL = i;
-    else URL = 'https://' + i + '/';
-  
-    // добавляем в очередь страницу thanks.php если был установлен флаг --with-thanks
-    if (processThanksPage) {
-      processUrl(`${URL}thanks.php`);
-      await sleep();
-    }
-    processUrl(URL);
-    // sendModule.checkSend(URL);
-    await sleep();
-  }
-})();
-
-function sleep() {
-  return new Promise(resolve => setTimeout(resolve, getDelay()));
-}
-
-function getDelay() {
-  if (fastMode) return 1000;
-  else return 10000;
-}
-
-async function processUrl(URL) {
+const processUrl  = async function(URL, fastMode) {
 
   console.log('start: ', URL);
 
@@ -57,7 +13,7 @@ async function processUrl(URL) {
   .build();
   try {
     await driver.get(URL);
-    driver.sleep(getDelay());
+    driver.sleep(getDelay(fastMode));
 
     // sendModule.send(driver);
 
@@ -121,7 +77,7 @@ async function processUrl(URL) {
       if (href === URL + '#') continue;
       else if (href === null) continue;
       else if (href === URL) continue;
-      else if (href.match(URL)) processUrl(href);
+      else if (href.match(URL)) processUrl(href, fastMode);
     }
   } catch (e) {
     console.log(e);
@@ -142,3 +98,10 @@ async function processUrl(URL) {
     await driver.quit();
   }
 }
+
+function getDelay(fastMode) {
+  if (fastMode) return 1000;
+  else return 10000;
+}
+
+module.exports.processUrl = processUrl;
