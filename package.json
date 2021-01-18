@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chrome-launcher": "^0.13.4",
+    "lighthouse": "^7.0.0",
     "selenium-webdriver": "^3.6.0",
     "winston": "^3.3.3"
   }
