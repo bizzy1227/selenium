@@ -3,16 +3,17 @@ const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
 // const sendModule = require('../send_form/send_module_3');
 
-const processUrl  = async function(URL, fastMode) {
+const processUrl  = async function(URL, fastMode, driver) {
 
   console.log('start: ', URL);
 
   // '--ignore-certificate-errors', '--ignore-ssl-errors'
-  let driver = await new Builder().forBrowser('chrome')
-  .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
-  .build();
+  // let driver = await new Builder().forBrowser('chrome')
+  // .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
+  // .build();
   try {
-    await driver.get(URL);
+    // await driver.get(URL);
+    console.log('before: ', await driver.getCurrentUrl());
     driver.sleep(getDelay(fastMode));
 
     // sendModule.send(driver);
@@ -69,16 +70,16 @@ const processUrl  = async function(URL, fastMode) {
     }
 
     // найти все ссылки этого же сайта 
-    let links = await driver.findElements(By.css('a'));
-    for(let link of links) {
-      let href = await link.getAttribute('href');
-      // нужно сделать set только с уникальными линками (или нет)
-      // console.log('href: ', href);
-      if (href === URL + '#') continue;
-      else if (href === null) continue;
-      else if (href === URL) continue;
-      else if (href.match(URL)) processUrl(href, fastMode);
-    }
+    // let links = await driver.findElements(By.css('a'));
+    // for(let link of links) {
+    //   let href = await link.getAttribute('href');
+    //   // нужно сделать set только с уникальными линками (или нет)
+    //   // console.log('href: ', href);
+    //   if (href === URL + '#') continue;
+    //   else if (href === null) continue;
+    //   else if (href === URL) continue;
+    //   else if (href.match(URL)) processUrl(href, fastMode);
+    // }
   } catch (e) {
     console.log(e);
     // настройка логера winston
@@ -94,8 +95,6 @@ const processUrl  = async function(URL, fastMode) {
       level: 'warn',
       message: e.message
     });
-  } finally {
-    await driver.quit();
   }
 }
 

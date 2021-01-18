@@ -2,6 +2,7 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
+const webErrorsModule = require('../web_errors/web_errors_module');
 
 let countRedirect = 0;
 
@@ -36,11 +37,9 @@ const checkSend  = async function(URL) {
 }
 
 async function checkForm(driver, URL) {
-    /*
-    Тут Можно собирать ошибки консоли
-    
-    
-    */
+    // подучаем ошибки консоли
+    webErrorsModule.processUrl(URL, false, driver);
+
     let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
     // console.log(await form[0].isDisplayed());

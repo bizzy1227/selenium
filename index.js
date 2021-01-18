@@ -31,8 +31,8 @@ siteQuery = siteQuery.split('\n');
         webErrorsModule.processUrl(`${URL}thanks.php`, fastMode);
         await sleep();
     }
-    webErrorsModule.processUrl(URL, fastMode);
-    // sendModule.checkSend(URL);
+    // webErrorsModule.processUrl(URL, fastMode);
+    sendModule.checkSend(URL);
     await sleep();
   }
 })();
