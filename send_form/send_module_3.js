@@ -37,7 +37,7 @@ const checkSend  = async function(URL) {
 }
 
 async function checkForm(driver, URL) {
-    // подучаем ошибки консоли
+    // получаем ошибки консоли
     webErrorsModule.processUrl(URL, false, driver);
 
     let indexElements = 0;
@@ -93,6 +93,8 @@ async function checkLastUrl(driver, URL) {
             countRedirect = 0;
         }
     } else {
+        // получаем ошибки консоли страницы thanks.php
+        webErrorsModule.processUrl(URL, false, driver);
         countRedirect = 0;
         console.log('Test send form done', URL);
     }

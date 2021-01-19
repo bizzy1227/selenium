@@ -13,7 +13,7 @@ const processUrl  = async function(URL, fastMode, driver) {
   // .build();
   try {
     // await driver.get(URL);
-    console.log('before: ', await driver.getCurrentUrl());
+    console.log('before: ', URL);
     driver.sleep(getDelay(fastMode));
 
     // sendModule.send(driver);
@@ -26,7 +26,7 @@ const processUrl  = async function(URL, fastMode, driver) {
     const logger = winston.createLogger({
       level: 'error',
       format: winston.format.json(),
-      defaultMeta: { service: URL },
+      defaultMeta: { service: await driver.getCurrentUrl() },
       transports: [
         new winston.transports.File({ filename: 'web_console_errors.log', level: 'error' }),
       ]
@@ -39,6 +39,8 @@ const processUrl  = async function(URL, fastMode, driver) {
       // resultObj[URL].errors = [];
       for (let [i, err] of errors.entries()) {
         let obj = new Object(err);
+        // если нужно скипать WARNING ошибки
+        // if (obj.level.name_ === 'WARNING') continue;
         logger.log({
           level: 'error',
           message: obj.message
