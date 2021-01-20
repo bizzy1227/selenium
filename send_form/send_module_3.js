@@ -7,43 +7,38 @@ const webErrorsModule = require('../web_errors/web_errors_module');
 let countRedirect = 0;
 let logger;
 
-const checkSend  = async function(URL) {
+let capabilities = false;
 
-    const capabilities = {
-        'device' : 'iPhone 11',
-        'realMobile' : 'true',
-        'os_version' : '14.0',
-        'browserName' : 'iPhone',
-        'name': 'BStack-[NodeJS] Sample Test', // test name
-        'build': 'BStack Build Number 1', // CI/CD job or build name
-        'browserstack.user' : 'yaroslavsolovev1',
-        'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
-    }
+const checkSend  = async function(URL, cp = false) {
+    let driver;
+    capabilities = cp;
 
-    console.log(capabilities.device);
+    console.log('run on ' + capabilities ? 'browser-stack' : 'browser');
 
     /*
-        1. Нужно прокидовать настройку логера в web_errors
+        1. Нужно прокидовать настройку логера в web_errors +
         2. capabilities нужно получать с индекса что бы проходить все сайты с конкретным девайсом и возможно передавать в 
-        web_errors вместо п.1
+        web_errors вместо п.1 +
         3. Проверка неогары
     */
 
     logger = winston.createLogger({
         level: 'error',
         format: winston.format.json(),
-        defaultMeta: { service: capabilities.device },
+        defaultMeta: { service: capabilities ? 'browser-stack' : 'browser' },
         transports: [
           new winston.transports.File({ filename: 'send_form_errors.log', level: 'error' }),
         ]
     });
 
-    let driver = await new Builder().usingServer('http://hub-cloud.browserstack.com/wd/hub').
-    withCapabilities(capabilities).build();
-
-    // let driver = await new Builder().forBrowser('chrome')
-    // .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
-    // .build();
+    if (capabilities) {
+        driver = await new Builder().usingServer('http://hub-cloud.browserstack.com/wd/hub')
+        .withCapabilities(capabilities).build();
+    } else {
+        driver = await new Builder().forBrowser('chrome')
+        .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
+        .build();
+    }
 
     try {
         await driver.get(URL);
@@ -60,7 +55,7 @@ const checkSend  = async function(URL) {
 
 async function checkForm(driver, URL) {
     // получаем ошибки консоли
-    webErrorsModule.processUrl(URL, false, driver);
+    webErrorsModule.processUrl(URL, false, driver, capabilities);
 
     let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
@@ -121,7 +116,7 @@ async function checkLastUrl(driver, URL) {
         }
     } else if (await currentUrl.match(/thanks.php$/)) {
         // получаем ошибки консоли страницы thanks.php
-        webErrorsModule.processUrl(URL, false, driver);
+        webErrorsModule.processUrl(URL, false, driver, capabilities);
         countRedirect = 0;
         console.log('Test send form done', URL);
     } else {
@@ -147,6 +142,6 @@ async function setValue(name, length, element, i) {
 
 }
 
-checkSend('https://magxeomizpeper.pl/');
+// checkSend('https://magxeomizpeper.pl/');
 
 module.exports.checkSend = checkSend;

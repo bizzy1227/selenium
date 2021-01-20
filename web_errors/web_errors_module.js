@@ -3,7 +3,7 @@ const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
 // const sendModule = require('../send_form/send_module_3');
 
-const processUrl  = async function(URL, fastMode, driver) {
+const processUrl  = async function(URL, fastMode, driver, capabilities = false) {
 
   console.log('start: ', URL);
 
@@ -26,7 +26,7 @@ const processUrl  = async function(URL, fastMode, driver) {
     const logger = winston.createLogger({
       level: 'error',
       format: winston.format.json(),
-      defaultMeta: { service: 'test str' },
+      defaultMeta: { service: capabilities ? 'browser-stack' : 'browser' },
       transports: [
         new winston.transports.File({ filename: 'web_console_errors.log', level: 'error' }),
       ]
@@ -89,7 +89,7 @@ const processUrl  = async function(URL, fastMode, driver) {
     const logger = winston.createLogger({
       level: 'warn',
       format: winston.format.json(),
-      defaultMeta: { service: 'test str' },
+      defaultMeta: { service: capabilities ? 'browser-stack' : 'browser' },
       transports: [
         new winston.transports.File({ filename: 'js_console_errors.log', level: 'warn' }),
       ]

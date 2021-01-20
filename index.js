@@ -3,6 +3,7 @@ const fs = require("fs");
 const sendModule = require('./send_form/send_module_3');
 const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
+const deviceSettings = require('./devices');
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
@@ -34,7 +35,8 @@ siteQuery = siteQuery.split('\n');
     }
     // webErrorsModule.processUrl(URL, fastMode);
     lighthouseModule.checkLighthouse(URL);
-    sendModule.checkSend(URL);
+    // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
+    sendModule.checkSend(URL, deviceSettings.DEVICES[1]);
     await sleep();
   }
 })();
