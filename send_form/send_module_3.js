@@ -26,6 +26,7 @@ const checkSend  = async function(URL) {
         1. Нужно прокидовать настройку логера в web_errors
         2. capabilities нужно получать с индекса что бы проходить все сайты с конкретным девайсом и возможно передавать в 
         web_errors вместо п.1
+        3. Проверка неогары
     */
 
     logger = winston.createLogger({
