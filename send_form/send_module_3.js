@@ -9,18 +9,39 @@ let logger;
 
 const checkSend  = async function(URL) {
 
+    const capabilities = {
+        'device' : 'iPhone 11',
+        'realMobile' : 'true',
+        'os_version' : '14.0',
+        'browserName' : 'iPhone',
+        'name': 'BStack-[NodeJS] Sample Test', // test name
+        'build': 'BStack Build Number 1', // CI/CD job or build name
+        'browserstack.user' : 'yaroslavsolovev1',
+        'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
+    }
+
+    console.log(capabilities.device);
+
+    /*
+    1. Нужно прокидовать настройку логера в web_errors
+    2. capabilities нужно получать с индекса что бы проходить все сайты с конкретным девайсом
+    */
+
     logger = winston.createLogger({
         level: 'error',
         format: winston.format.json(),
-        defaultMeta: { service: 'test str' },
+        defaultMeta: { service: capabilities.device },
         transports: [
           new winston.transports.File({ filename: 'send_form_errors.log', level: 'error' }),
         ]
     });
 
-    let driver = await new Builder().forBrowser('chrome')
-        .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
-        .build();
+    let driver = await new Builder().usingServer('http://hub-cloud.browserstack.com/wd/hub').
+    withCapabilities(capabilities).build();
+
+    // let driver = await new Builder().forBrowser('chrome')
+    // .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
+    // .build();
 
     try {
         await driver.get(URL);
@@ -124,6 +145,6 @@ async function setValue(name, length, element, i) {
 
 }
 
-// checkSend('https://magxeomizpeper.pl/');
+checkSend('https://magxeomizpeper.pl/');
 
 module.exports.checkSend = checkSend;

@@ -47,3 +47,6 @@ function getDelay() {
     if (fastMode) return 1000;
     else return 10000;
 }
+
+// 'browserstack.user' : 'yaroslavsolovev1',
+// 'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
