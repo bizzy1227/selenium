@@ -5,19 +5,18 @@ const chrome = require('selenium-webdriver/chrome');
 const webErrorsModule = require('../web_errors/web_errors_module');
 
 let countRedirect = 0;
-
-
-
-const logger = winston.createLogger({
-    level: 'error',
-    format: winston.format.json(),
-    defaultMeta: { service: URL },
-    transports: [
-      new winston.transports.File({ filename: 'send_form_errors.log', level: 'error' }),
-    ]
-});
+let logger;
 
 const checkSend  = async function(URL) {
+
+    logger = winston.createLogger({
+        level: 'error',
+        format: winston.format.json(),
+        defaultMeta: { service: URL },
+        transports: [
+          new winston.transports.File({ filename: 'send_form_errors.log', level: 'error' }),
+        ]
+    });
 
     let driver = await new Builder().forBrowser('chrome')
         .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
@@ -91,19 +90,22 @@ async function checkLastUrl(driver, URL) {
         else {
             console.log(`The limit (${countRedirect}) of clicks on links has been exceeded`, URL);
             countRedirect = 0;
+            logger.log({
+                level: 'error',
+                message: `The limit (${countRedirect}) of clicks on links has been exceeded`
+            });
         }
-    } else {
+    } else if (await currentUrl.match(/thanks.php$/)) {
         // получаем ошибки консоли страницы thanks.php
         webErrorsModule.processUrl(URL, false, driver);
         countRedirect = 0;
         console.log('Test send form done', URL);
+    } else {
+        logger.log({
+            level: 'error',
+            message: 'Test send form failed'
+        });
     }
-    // else {
-    //     logger.log({
-    //         level: 'error',
-    //         message: 'Test send form failed'
-    //     });
-    // }
 }
 
 async function setValue(name, length, element, i) {
