@@ -26,7 +26,7 @@ const processUrl  = async function(URL, fastMode, driver) {
     const logger = winston.createLogger({
       level: 'error',
       format: winston.format.json(),
-      defaultMeta: { service: await driver.getCurrentUrl() },
+      defaultMeta: { service: 'test str' },
       transports: [
         new winston.transports.File({ filename: 'web_console_errors.log', level: 'error' }),
       ]
@@ -43,7 +43,8 @@ const processUrl  = async function(URL, fastMode, driver) {
         // if (obj.level.name_ === 'WARNING') continue;
         logger.log({
           level: 'error',
-          message: obj.message
+          message: obj.message,
+          URL: await driver.getCurrentUrl()
         });
         // если нужно скипать WARNING ошибки
         // if (obj.level.name_ === 'WARNING') continue;
@@ -88,14 +89,15 @@ const processUrl  = async function(URL, fastMode, driver) {
     const logger = winston.createLogger({
       level: 'warn',
       format: winston.format.json(),
-      defaultMeta: { service: URL },
+      defaultMeta: { service: 'test str' },
       transports: [
         new winston.transports.File({ filename: 'js_console_errors.log', level: 'warn' }),
       ]
     });
     logger.log({
       level: 'warn',
-      message: e.message
+      message: e.message,
+      URL: await driver.getCurrentUrl()
     });
   }
 }

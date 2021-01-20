@@ -12,7 +12,7 @@ const checkSend  = async function(URL) {
     logger = winston.createLogger({
         level: 'error',
         format: winston.format.json(),
-        defaultMeta: { service: URL },
+        defaultMeta: { service: 'test str' },
         transports: [
           new winston.transports.File({ filename: 'send_form_errors.log', level: 'error' }),
         ]
@@ -92,7 +92,8 @@ async function checkLastUrl(driver, URL) {
             countRedirect = 0;
             logger.log({
                 level: 'error',
-                message: `The limit (${countRedirect}) of clicks on links has been exceeded`
+                message: `The limit (${countRedirect}) of clicks on links has been exceeded`,
+                URL: currentUrl
             });
         }
     } else if (await currentUrl.match(/thanks.php$/)) {
@@ -103,7 +104,8 @@ async function checkLastUrl(driver, URL) {
     } else {
         logger.log({
             level: 'error',
-            message: 'Test send form failed'
+            message: 'Test send form failed',
+            URL: currentUrl
         });
     }
 }

@@ -13,7 +13,7 @@ const checkLighthouse  = async function(URL) {
   const logger = winston.createLogger({
     level: 'error',
     format: winston.format.json(),
-    defaultMeta: { service: URL },
+    defaultMeta: { service: 'test str' },
     transports: [
       new winston.transports.File({ filename: 'lighthouse_report.log', level: 'info' }),
     ]
@@ -22,7 +22,8 @@ const checkLighthouse  = async function(URL) {
   logger.log({
     level: 'info',
     message: 'mock',
-    performance: runnerResult.lhr.categories.performance.score * 100
+    performance: runnerResult.lhr.categories.performance.score * 100,
+    URL: URL
   });
 
   // `.report` is the HTML report as a string
