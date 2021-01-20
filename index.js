@@ -2,6 +2,7 @@ const fs = require("fs");
 
 const sendModule = require('./send_form/send_module_3');
 const webErrorsModule = require('./web_errors/web_errors_module');
+const lighthouseModule = require('./lighthouse/lighthouse_module');
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
@@ -32,6 +33,7 @@ siteQuery = siteQuery.split('\n');
         await sleep();
     }
     // webErrorsModule.processUrl(URL, fastMode);
+    lighthouseModule.checkLighthouse(URL);
     sendModule.checkSend(URL);
     await sleep();
   }
