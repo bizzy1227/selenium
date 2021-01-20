@@ -23,8 +23,9 @@ const checkSend  = async function(URL) {
     console.log(capabilities.device);
 
     /*
-    1. Нужно прокидовать настройку логера в web_errors
-    2. capabilities нужно получать с индекса что бы проходить все сайты с конкретным девайсом
+        1. Нужно прокидовать настройку логера в web_errors
+        2. capabilities нужно получать с индекса что бы проходить все сайты с конкретным девайсом и возможно передавать в 
+        web_errors вместо п.1
     */
 
     logger = winston.createLogger({
