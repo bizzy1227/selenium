@@ -13,7 +13,7 @@ const checkSend  = async function(URL, cp = false) {
     let driver;
     capabilities = cp;
 
-    console.log('run on ' + capabilities ? 'browser-stack' : 'browser');
+    console.log('run on', capabilities ? 'browser-stack' : 'browser');
 
     /*
         1. Нужно прокидовать настройку логера в web_errors +
@@ -27,9 +27,10 @@ const checkSend  = async function(URL, cp = false) {
         2. Проверить работу скрипта без таймаутов
             2.1 на локальном браузере
             2.2 на browser-stack
+        3. Попробовать executeScript (при необходимости)
+        4. Обработка прелендов
 
-
-
+            maxegvnimsiaer.pl - проблемный сайт ()
             adbcodketet.info
             quanhteulmsystem.ru
     */
@@ -60,6 +61,11 @@ const checkSend  = async function(URL, cp = false) {
 
     } catch (e) {
         console.log(e);
+        logger.log({
+            level: 'error',
+            message: e.message,
+            URL: URL
+        });
     }
 
 
