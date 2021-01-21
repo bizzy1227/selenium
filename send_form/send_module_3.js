@@ -22,6 +22,18 @@ const checkSend  = async function(URL, cp = false) {
         3. Проверка неогары
     */
 
+    /*
+        1. Нужен девайс на котором есть ошибка, что бы проверить интеграцию с browser-stack
+        2. Проверить работу скрипта без таймаутов
+            2.1 на локальном браузере
+            2.2 на browser-stack
+
+
+
+            adbcodketet.info
+            quanhteulmsystem.ru
+    */
+
     logger = winston.createLogger({
         level: 'error',
         format: winston.format.json(),

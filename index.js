@@ -34,7 +34,7 @@ siteQuery = siteQuery.split('\n');
         await sleep();
     }
     // webErrorsModule.processUrl(URL, fastMode);
-    lighthouseModule.checkLighthouse(URL);
+    // lighthouseModule.checkLighthouse(URL);
     // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
     sendModule.checkSend(URL, deviceSettings.DEVICES[1]);
     await sleep();
