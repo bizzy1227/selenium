@@ -5,7 +5,7 @@ const chrome = require('selenium-webdriver/chrome');
 
 const processUrl  = async function(URL, fastMode, driver, capabilities = false) {
 
-  console.log('start: ', URL);
+  console.log('start: ', await driver.getCurrentUrl());
 
   // '--ignore-certificate-errors', '--ignore-ssl-errors'
   // let driver = await new Builder().forBrowser('chrome')
@@ -13,8 +13,8 @@ const processUrl  = async function(URL, fastMode, driver, capabilities = false) 
   // .build();
   try {
     // await driver.get(URL);
-    console.log('before: ', URL);
-    driver.sleep(getDelay(fastMode));
+    console.log('before: ', await driver.getCurrentUrl());
+    // driver.sleep(getDelay(fastMode));
 
     // sendModule.send(driver);
 
@@ -35,8 +35,7 @@ const processUrl  = async function(URL, fastMode, driver, capabilities = false) 
 
     // если есть ошибки
     if (errors.length !== 0) {
-      // resultObj[URL]= {};
-      // resultObj[URL].errors = [];
+
       for (let [i, err] of errors.entries()) {
         let obj = new Object(err);
         // если нужно скипать WARNING ошибки
@@ -46,43 +45,10 @@ const processUrl  = async function(URL, fastMode, driver, capabilities = false) 
           message: obj.message,
           URL: await driver.getCurrentUrl()
         });
-        // если нужно скипать WARNING ошибки
-        // if (obj.level.name_ === 'WARNING') continue;
-        // resultObj[URL].errors.push(obj);
       }
-  
-      // продолжаем если приоритет ошибок больше WARNING
-      // if (resultObj[URL].errors.length !== 0) {
-      //   let myJSON;
-      
-      //   fs.readFile('web_console_errors.json', 'utf8', function readFileCallback(err, data){
-      //     if (err){
-      //         console.log(err);
-      //     } else {
-      //       myJSON = JSON.parse(data); //now it an object 
-      //       myJSON.sites.push(resultObj);
-      //       myJSON = JSON.stringify(myJSON, null, 4);
-    
-      //       fs.writeFile('web_console_errors.json', myJSON, function(error){
-      //         if(error) throw error; // если возникла ошибка
-                          
-      //         console.log('Запись файла завершена.');
-      //       });
-      //   }});
-      // };
+
     }
 
-    // найти все ссылки этого же сайта 
-    // let links = await driver.findElements(By.css('a'));
-    // for(let link of links) {
-    //   let href = await link.getAttribute('href');
-    //   // нужно сделать set только с уникальными линками (или нет)
-    //   // console.log('href: ', href);
-    //   if (href === URL + '#') continue;
-    //   else if (href === null) continue;
-    //   else if (href === URL) continue;
-    //   else if (href.match(URL)) processUrl(href, fastMode);
-    // }
   } catch (e) {
     console.log(e);
     // настройка логера winston

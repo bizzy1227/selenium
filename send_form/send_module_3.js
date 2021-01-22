@@ -55,7 +55,7 @@ const checkSend  = async function(URL, cp = false) {
 
     try {
         await driver.get(URL);
-        driver.sleep(5000);
+        // driver.sleep(5000);
 
         checkForm(driver, URL);
 
@@ -89,7 +89,7 @@ async function checkForm(driver, URL) {
         let link = await driver.findElement(By.css('a'));
         await link.click();
 
-        driver.sleep(10000);
+        // driver.sleep(10000);
 
         let currentUrl = await driver.getCurrentUrl();
         checkForm(driver, currentUrl);
@@ -113,7 +113,7 @@ async function fillForm(driver, URL, i) {
     let submit = await driver.findElements(By.xpath(`//*[@type='submit']`));
     await submit[i].click();
 
-    driver.sleep(10000);
+    // driver.sleep(10000);
 
     checkLastUrl(driver, URL);
 }

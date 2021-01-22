@@ -4,6 +4,8 @@ const sendModule = require('./send_form/send_module_3');
 const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
 const deviceSettings = require('./devices');
+const parseNeogara = require('./parsers/neogaraParser');
+const { callbackify } = require("util");
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
@@ -36,9 +38,11 @@ siteQuery = siteQuery.split('\n');
     // webErrorsModule.processUrl(URL, fastMode);
     // lighthouseModule.checkLighthouse(URL);
     // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
-    sendModule.checkSend(URL, deviceSettings.DEVICES[1]);
-    await sleep();
+    await sendModule.checkSend(URL);
+    // await sleep();
   }
+  // const neogararesults = await parseNeogara.NeogaraGetConversions({limit: siteQuery.length + 2});
+  // console.log(neogararesults);
 })();
 
 function sleep() {

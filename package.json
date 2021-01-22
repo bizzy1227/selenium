@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "chrome-launcher": "^0.13.4",
     "lighthouse": "^7.0.0",
     "selenium-webdriver": "^3.6.0",
