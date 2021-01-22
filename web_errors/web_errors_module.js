@@ -4,6 +4,7 @@ const chrome = require('selenium-webdriver/chrome');
 // const sendModule = require('../send_form/send_module_3');
 
 const processUrl  = async function(URL, fastMode, driver, capabilities = false) {
+  console.log('in processUrl');
 
   console.log('start: ', await driver.getCurrentUrl());
 

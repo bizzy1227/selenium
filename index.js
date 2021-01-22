@@ -41,8 +41,8 @@ siteQuery = siteQuery.split('\n');
     await sendModule.checkSend(URL);
     // await sleep();
   }
-  // const neogararesults = await parseNeogara.NeogaraGetConversions({limit: siteQuery.length + 2});
-  // console.log(neogararesults);
+  const neogararesults = await parseNeogara.NeogaraGetConversions({limit: siteQuery.length + 2});
+  console.log(neogararesults);
 })();
 
 function sleep() {

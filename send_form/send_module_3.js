@@ -10,6 +10,7 @@ let logger;
 let capabilities = false;
 
 const checkSend  = async function(URL, cp = false) {
+    console.log('in checkSend');
     let driver;
     capabilities = cp;
 
@@ -57,7 +58,7 @@ const checkSend  = async function(URL, cp = false) {
         await driver.get(URL);
         // driver.sleep(5000);
 
-        checkForm(driver, URL);
+        await checkForm(driver, URL);
 
     } catch (e) {
         console.log(e);
@@ -72,6 +73,7 @@ const checkSend  = async function(URL, cp = false) {
 }
 
 async function checkForm(driver, URL) {
+    console.log('in checkForm');
     // получаем ошибки консоли
     webErrorsModule.processUrl(URL, false, driver, capabilities);
 
@@ -82,7 +84,7 @@ async function checkForm(driver, URL) {
     // если есть форма
     if (form.length > 0) {
         if (!await form[indexElements].isDisplayed()) indexElements = 1;
-        fillForm(driver, URL, indexElements);
+        await fillForm(driver, URL, indexElements);
     } 
     else {
     // если нет формы
@@ -97,6 +99,7 @@ async function checkForm(driver, URL) {
 }
 
 async function fillForm(driver, URL, i) {
+    console.log('in fillForm');
 
     let firstname = await driver.findElements(By.name('firstname'));
     setValue('firstname', firstname.length, firstname, i);
@@ -119,6 +122,8 @@ async function fillForm(driver, URL, i) {
 }
 
 async function checkLastUrl(driver, URL) {
+    console.log('in checkLastUrl');
+
     let currentUrl = await driver.getCurrentUrl();
     if (! await currentUrl.match(/thanks.php$/)) {
         countRedirect++;
@@ -147,6 +152,8 @@ async function checkLastUrl(driver, URL) {
 }
 
 async function setValue(name, length, element, i) {
+    console.log('in setValue');
+    
     const userData = {
         firstname: 'Firstname',
         lastname: 'Lastname',
