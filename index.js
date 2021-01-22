@@ -38,7 +38,7 @@ siteQuery = siteQuery.split('\n');
     // webErrorsModule.processUrl(URL, fastMode);
     // lighthouseModule.checkLighthouse(URL);
     // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
-    await sendModule.checkSend(URL);
+    await sendModule.checkSend(URL, false);
     // await sleep();
   }
   const neogararesults = await parseNeogara.NeogaraGetConversions({limit: siteQuery.length + 2});

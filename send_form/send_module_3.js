@@ -8,11 +8,13 @@ let countRedirect = 0;
 let logger;
 
 let capabilities = false;
+let processWebErrors = false;
 
-const checkSend  = async function(URL, cp = false) {
+const checkSend  = async function(URL, getWebErr, cp = false) {
     console.log('in checkSend');
     let driver;
     capabilities = cp;
+    processWebErrors = getWebErr;
 
     console.log('run on', capabilities ? 'browser-stack' : 'browser');
 
@@ -76,7 +78,7 @@ const checkSend  = async function(URL, cp = false) {
 async function checkForm(driver, URL) {
     console.log('in checkForm');
     // получаем ошибки консоли
-    webErrorsModule.processUrl(URL, false, driver, capabilities);
+    if (processWebErrors) webErrorsModule.processUrl(URL, false, driver, capabilities);
 
     let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
@@ -140,7 +142,7 @@ async function checkLastUrl(driver, URL) {
         }
     } else if (await currentUrl.match(/thanks.php$/)) {
         // получаем ошибки консоли страницы thanks.php
-        webErrorsModule.processUrl(URL, false, driver, capabilities);
+        if (processWebErrors) webErrorsModule.processUrl(URL, false, driver, capabilities);
         countRedirect = 0;
         console.log('Test send form done', URL);
     } else {
