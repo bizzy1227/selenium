@@ -1,5 +1,5 @@
-const DEVICES = {
-    0: {
+const DEVICES = [
+    {
         'device' : 'iPhone 11',
         'realMobile' : 'true',
         'os_version' : '14.0',
@@ -9,7 +9,7 @@ const DEVICES = {
         'browserstack.user' : 'yaroslavsolovev1',
         'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
     },
-    1: {
+    {
         'os_version' : '10',
         'resolution' : '1920x1080',
         'browserName' : 'Chrome',
@@ -20,7 +20,7 @@ const DEVICES = {
         'browserstack.user' : 'yaroslavsolovev1',
         'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
     },
-    2: {
+    {
         'device' : 'Samsung Galaxy S9 Plus',
         'realMobile' : 'true',
         'os_version' : '9.0',
@@ -30,6 +30,6 @@ const DEVICES = {
         'browserstack.user' : 'yaroslavsolovev1',
         'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
     }
-}
+]
 
 module.exports.DEVICES = DEVICES;

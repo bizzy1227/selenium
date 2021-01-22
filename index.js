@@ -5,7 +5,6 @@ const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
-const { callbackify } = require("util");
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
@@ -38,11 +37,38 @@ siteQuery = siteQuery.split('\n');
     // webErrorsModule.processUrl(URL, fastMode);
     // lighthouseModule.checkLighthouse(URL);
     // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
-    await sendModule.checkSend(URL, false);
+    await sendModule.checkSend(URL, true);
+    await sendModule.checkSend(URL, false, deviceSettings.DEVICES[2]);
     // await sleep();
   }
-  const neogararesults = await parseNeogara.NeogaraGetConversions({limit: siteQuery.length + 2});
-  console.log(neogararesults);
+  const neogararesults = await parseNeogara.NeogaraGetConversions({limit: siteQuery.length + 10});
+  // console.log(neogararesults);
+  // console.log(siteQuery);
+  let lastResultObj = {};
+
+  // создаю поля для каждого сайта из списка
+  for (let sqIndex of siteQuery) {
+    lastResultObj[sqIndex] = [];
+  }
+  console.log('lastResultObj empty: ', lastResultObj);
+  // для каждого пришедшего мыла с неогары подбираем сайт из нашего списка
+  // при совпадении пушим инфу о лиде под соответствующий сайт
+  for (let ngIndex of neogararesults) {
+    for (let sqIndex of siteQuery) {
+      if (ngIndex.ref.indexOf(sqIndex) !== -1 && ngIndex.email === 'testmail3@gmail.com') {
+        lastResultObj[sqIndex].push(ngIndex);
+      }
+    }
+  }
+  console.log('lastResultObj before check: ', lastResultObj);
+  // в конце удаляем те сайты, которые имеют в себе лидов ровно столько сколько было отправлено форм
+  // если лидо не ровно - какая-то отправка сфейлилась
+  for (let key in lastResultObj) {
+    if (lastResultObj[key].length === 2) {
+      delete lastResultObj[key];
+    }
+  }
+  console.log('lastResultObj after check: ', lastResultObj);
 })();
 
 function sleep() {

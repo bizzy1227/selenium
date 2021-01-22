@@ -37,6 +37,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
             maxegvnimsiaer.pl - проблемный сайт (это сайт с клоакой)
             adbcodketet.info
             quanhteulmsystem.ru
+            https://paettearon.info/kod.php
     */
 
     logger = winston.createLogger({
@@ -78,7 +79,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
 async function checkForm(driver, URL) {
     console.log('in checkForm');
     // получаем ошибки консоли
-    if (processWebErrors) webErrorsModule.processUrl(URL, false, driver, capabilities);
+    if (processWebErrors) await webErrorsModule.processUrl(URL, false, driver, capabilities);
 
     let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
@@ -97,7 +98,7 @@ async function checkForm(driver, URL) {
         // driver.sleep(10000);
 
         let currentUrl = await driver.getCurrentUrl();
-        checkForm(driver, currentUrl);
+        await checkForm(driver, currentUrl);
     } 
 }
 
@@ -105,23 +106,23 @@ async function fillForm(driver, URL, i) {
     console.log('in fillForm');
 
     let firstname = await driver.findElements(By.name('firstname'));
-    setValue('firstname', firstname.length, firstname, i);
+    await setValue('firstname', firstname.length, firstname, i);
 
     let lastname = await driver.findElements(By.name('lastname'));
-    setValue('lastname', lastname.length, lastname, i);
+    await setValue('lastname', lastname.length, lastname, i);
 
     let tel = await driver.findElements(By.name('phone_number'));
-    setValue('tel', tel.length, tel, i);
+    await setValue('tel', tel.length, tel, i);
 
     let email = await driver.findElements(By.name('email'));
-    setValue('email', email.length, email, i);
+    await setValue('email', email.length, email, i);
 
     let submit = await driver.findElements(By.xpath(`//*[@type='submit']`));
     await submit[i].click();
 
     // driver.sleep(10000);
 
-    checkLastUrl(driver, URL);
+    await checkLastUrl(driver, URL);
 }
 
 async function checkLastUrl(driver, URL) {
@@ -130,7 +131,7 @@ async function checkLastUrl(driver, URL) {
     let currentUrl = await driver.getCurrentUrl();
     if (! await currentUrl.match(/thanks.php$/)) {
         countRedirect++;
-        if (countRedirect < 3) checkForm(driver, currentUrl);
+        if (countRedirect < 3) await checkForm(driver, currentUrl);
         else {
             console.log(`The limit (${countRedirect}) of clicks on links has been exceeded`, URL);
             countRedirect = 0;
@@ -142,7 +143,7 @@ async function checkLastUrl(driver, URL) {
         }
     } else if (await currentUrl.match(/thanks.php$/)) {
         // получаем ошибки консоли страницы thanks.php
-        if (processWebErrors) webErrorsModule.processUrl(URL, false, driver, capabilities);
+        if (processWebErrors) await webErrorsModule.processUrl(URL, false, driver, capabilities);
         countRedirect = 0;
         console.log('Test send form done', URL);
     } else {
@@ -158,10 +159,10 @@ async function setValue(name, length, element, i) {
     console.log('in setValue');
     
     const userData = {
-        firstname: 'Firstname',
-        lastname: 'Lastname',
-        email: 'testmail@gmail.com',
-        tel: 639113425
+        firstname: 'test',
+        lastname: 'test',
+        email: 'testmail3@gmail.com',
+        tel: 111111111
     }
     if (length > 0) {
         await element[i].clear();
