@@ -101,10 +101,11 @@ async function checkForm(driver, URL) {
 }
 
 async function fillForm(driver, URL, i) {
+    let oldUrl = URL;
     console.log('in fillForm');
 
     let firstname = await driver.findElements(By.name('firstname'));
-    await setValue('firstname', firstname.length, firstname, i);
+    await setValue('firstname', firstname.length, firstname, i); 
 
     let lastname = await driver.findElements(By.name('lastname'));
     await setValue('lastname', lastname.length, lastname, i);
@@ -116,10 +117,16 @@ async function fillForm(driver, URL, i) {
     await setValue('email', email.length, email, i);
 
     let submit = await driver.findElements(By.xpath(`//*[@type='submit']`));
-    await submit[i].click();
+    await clickBtn(submit, i);
 
-    await driver.sleep(5000);
-
+    
+    // await driver.sleep(5000);
+    const documentInitialised = async function() {
+        if (oldUrl !== await driver.getCurrentUrl()) return true;
+        else return false;
+    }
+    await driver.wait(() => documentInitialised(), 30000);
+    
     await checkLastUrl(driver, URL);
 }
 
@@ -127,6 +134,8 @@ async function checkLastUrl(driver, URL) {
     console.log('in checkLastUrl');
 
     let currentUrl = await driver.getCurrentUrl();
+    console.log('crrURL', currentUrl);
+    
     if (! await currentUrl.match(/thanks.php$/)) {
         countRedirect++;
         if (countRedirect < 3) await checkForm(driver, currentUrl);
@@ -160,7 +169,7 @@ async function setValue(name, length, element, i) {
     const userData = {
         firstname: 'test',
         lastname: 'test',
-        email: 'testmail4@gmail.com',
+        email: 'testmail5@gmail.com',
         tel: 111111111
     }
     if (length > 0) {
@@ -168,6 +177,11 @@ async function setValue(name, length, element, i) {
         await element[i].sendKeys(userData[name]);
     } 
 
+}
+
+async function clickBtn(submit, i) {
+    console.log('in clickBtn');
+    submit[i].click();
 }
 
 // checkSend('https://magxeomizpeper.pl/');
