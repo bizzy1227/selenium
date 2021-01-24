@@ -17,12 +17,25 @@ if (myArgs.includes('--with-thanks')) processThanksPage = true;
 let fastMode = false;
 if (myArgs.includes('--fast')) fastMode = true;
 
+let startDate;
+
 // получаем список сайтов
 let siteQuery = fs.readFileSync("./input.txt", "utf8");
 siteQuery = siteQuery.replace(/\r/g, '');
 siteQuery = siteQuery.split('\n');
 
 (async function run() {
+  // настрока времени старта
+  // Date.prototype.addHours = function(h) {
+  //   this.setTime(this.getTime() + (h*60*60*1000));
+  //   return this;
+  // }
+  // startDate = new Date().addHours(2).toISOString();
+  
+  
+  
+  
+  
   for (let i of siteQuery) {
     let URL = '';
     // проверка на домен и если надо добавляем https://
@@ -37,11 +50,31 @@ siteQuery = siteQuery.split('\n');
     // webErrorsModule.processUrl(URL, fastMode);
     // lighthouseModule.checkLighthouse(URL);
     // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
+
     await sendModule.checkSend(URL, true);
-    await sendModule.checkSend(URL, false, deviceSettings.DEVICES[2]);
+    // await sendModule.checkSend(URL, false, deviceSettings.DEVICES[0]);
+    for (let device of deviceSettings.DEVICES) {
+      await sendModule.checkSend(URL, false, device);
+    }
     // await sleep();
   }
-  const neogararesults = await parseNeogara.NeogaraGetConversions({limit: siteQuery.length + 10});
+  await checkNeogara(startDate);
+
+})();
+
+function sleep() {
+    return new Promise(resolve => setTimeout(resolve, getDelay()));
+}
+
+function getDelay() {
+    if (fastMode) return 1000;
+    else return 10000;
+}
+
+async function checkNeogara(startDate) {
+  console.log('in checkNeogara');
+  
+  const neogararesults = await parseNeogara.NeogaraGetConversions(startDate);
   // console.log(neogararesults);
   // console.log(siteQuery);
   let lastResultObj = {};
@@ -55,7 +88,7 @@ siteQuery = siteQuery.split('\n');
   // при совпадении пушим инфу о лиде под соответствующий сайт
   for (let ngIndex of neogararesults) {
     for (let sqIndex of siteQuery) {
-      if (ngIndex.ref.indexOf(sqIndex) !== -1 && ngIndex.email === 'testmail3@gmail.com') {
+      if (ngIndex.ref.indexOf(sqIndex) !== -1 && ngIndex.email === 'testmail4@gmail.com') {
         lastResultObj[sqIndex].push(ngIndex);
       }
     }
@@ -64,20 +97,12 @@ siteQuery = siteQuery.split('\n');
   // в конце удаляем те сайты, которые имеют в себе лидов ровно столько сколько было отправлено форм
   // если лидо не ровно - какая-то отправка сфейлилась
   for (let key in lastResultObj) {
-    if (lastResultObj[key].length === 2) {
+    if (lastResultObj[key].length === deviceSettings.DEVICES.length + 1) {
       delete lastResultObj[key];
     }
   }
   console.log('lastResultObj after check: ', lastResultObj);
-})();
-
-function sleep() {
-    return new Promise(resolve => setTimeout(resolve, getDelay()));
-}
-
-function getDelay() {
-    if (fastMode) return 1000;
-    else return 10000;
+  if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form');
 }
 
 // 'browserstack.user' : 'yaroslavsolovev1',

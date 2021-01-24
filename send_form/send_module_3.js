@@ -22,15 +22,14 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
         1. Проверка неогары +
         2. Брать выборку с неогары по времени
         3. Протестить логи
-        4. Настроить работу:
+        4. Настроить работу: +
             4.1 Один запуск на все сайты в хэд режиме локально для сбора ошибок
             4.2 Запуск каждого сайта на нужном девайсе (на каждом девайсе)
         5. Проверить работу скрипта без таймаутов +
             5.1 на локальном браузере
             5.2 на browser-stack
         6. Попробовать executeScript (при необходимости)
-        7. Обработка сайтов с Клоакой (отслеживать по ссылкам на гугл, тильду)
-
+        7. Обработка сайтов с Клоакой (отслеживать по ссылкам на гугл, тильду. Передавать блэк страницы в обработку)
             maxegvnimsiaer.pl - проблемный сайт (это сайт с клоакой)
             adbcodketet.info
             quanhteulmsystem.ru
@@ -89,10 +88,12 @@ async function checkForm(driver, URL) {
     } 
     else {
     // если нет формы
-        let link = await driver.findElement(By.css('a'));
+    console.log('in block no form');
+        let link = await driver.findElement(By.xpath('//a'));
         await link.click();
 
-        // driver.sleep(10000);
+        // жду когда появится форма (возможно улучшить, что бы ждать загрузку страницы)
+        await driver.wait(until.elementLocated(By.css('form')), 10000);
 
         let currentUrl = await driver.getCurrentUrl();
         await checkForm(driver, currentUrl);
@@ -117,7 +118,7 @@ async function fillForm(driver, URL, i) {
     let submit = await driver.findElements(By.xpath(`//*[@type='submit']`));
     await submit[i].click();
 
-    // driver.sleep(10000);
+    await driver.sleep(5000);
 
     await checkLastUrl(driver, URL);
 }
@@ -143,6 +144,7 @@ async function checkLastUrl(driver, URL) {
         if (processWebErrors) await webErrorsModule.processUrl(URL, false, driver, capabilities);
         countRedirect = 0;
         console.log('Test send form done', URL);
+        return;
     } else {
         logger.log({
             level: 'error',
@@ -158,7 +160,7 @@ async function setValue(name, length, element, i) {
     const userData = {
         firstname: 'test',
         lastname: 'test',
-        email: 'testmail3@gmail.com',
+        email: 'testmail4@gmail.com',
         tel: 111111111
     }
     if (length > 0) {

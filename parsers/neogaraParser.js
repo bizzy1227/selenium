@@ -11,6 +11,23 @@ const request = axios.create({
   }
 })
 
+// const NeogaraGetConversions = async (options ={}) =>{
+//   try {
+
+//     // startDate = encodeURIComponent(startDate);
+//     // finishDate = encodeURIComponent(finishDate);
+
+//     // console.log(`?filter=%7B"createdAt%7C%7C%24gte"%3A"${startDate}"%2C"createdAt%7C%7C%24lte"%3A"${finishDate}"%7D&order=DESC&page=1&perPage=25&sort=id`);
+    
+
+//     const limit = parseInt(options.limit) || 10
+//     const data = await request.get(`conversions?filter=%7B"createdAt%7C%7C%24gte"%3A"2021-01-20T11%3A36%3A00.000Z"%2C"createdAt%7C%7C%24lte"%3A"2021-01-21T11%3A36%3A00.000Z"%7D&order=DESC&page=1&perPage=25&sort=id`).then(res => {return res.data.data})
+//     return data.map(l => {return {email: l.lid.email, device: l.lid.userAgent, ref: l.lid.ref}})
+//   } catch (error) {
+//     return error
+//   }
+// }
+
 const NeogaraGetConversions = async (options ={}) =>{
   try {
     const limit = parseInt(options.limit) || 10
@@ -24,5 +41,5 @@ const NeogaraGetConversions = async (options ={}) =>{
 module.exports.NeogaraGetConversions = NeogaraGetConversions;
 
 // (async ()=>{
-//   console.log(await NeogaraGetConversions({limit: 5}));
+//   console.log(await NeogaraGetConversions());
 // })()
