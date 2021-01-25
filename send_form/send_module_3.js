@@ -14,6 +14,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
     console.log('in checkSend');
     let driver;
     capabilities = cp;
+    console.log('cp =', capabilities);
     processWebErrors = getWebErr;
 
     console.log('run on', capabilities ? 'browser-stack' : 'browser');
@@ -67,6 +68,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
             message: e.message,
             URL: URL
         });
+        driver.quit();
     }
 
 
@@ -153,6 +155,7 @@ async function checkLastUrl(driver, URL) {
         if (processWebErrors) await webErrorsModule.processUrl(URL, false, driver, capabilities);
         countRedirect = 0;
         console.log('Test send form done', URL);
+        driver.quit();
         return;
     } else {
         logger.log({
@@ -160,6 +163,7 @@ async function checkLastUrl(driver, URL) {
             message: 'Test send form failed',
             URL: currentUrl
         });
+        driver.quit();
     }
 }
 

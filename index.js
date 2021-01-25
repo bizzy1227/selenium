@@ -5,6 +5,7 @@ const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
+const countries = ['PL', 'UA', 'RU'];
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
@@ -16,6 +17,10 @@ if (myArgs.includes('--with-thanks')) processThanksPage = true;
 // проверка установлен ли флаг на быструю работу
 let fastMode = false;
 if (myArgs.includes('--fast')) fastMode = true;
+
+// первый параметр должен быть код страны для проверки
+let testCountry = false;
+if (countries.includes(myArgs[0])) testCountry = myArgs[0];
 
 let startDate;
 let sendFormErrors = [];
@@ -34,10 +39,6 @@ siteQuery = siteQuery.split('\n');
   // startDate = new Date().toISOString();
   // console.log(startDate);
   
-  
-  
-  
-  
   for (let i of siteQuery) {
     startDate = new Date().toISOString();
     console.log(startDate);
@@ -55,9 +56,16 @@ siteQuery = siteQuery.split('\n');
     // lighthouseModule.checkLighthouse(URL);
     // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
 
+    // const promises = []
+    // promises.push(someFunc1())
+    // promises.push(someFunc2())
+    // promises.push(someFunc3())
+    // const result = await Promisses.All(promises)
+
     await sendModule.checkSend(URL, true);
     // await sendModule.checkSend(URL, false, deviceSettings.DEVICES[0]);
     for (let device of deviceSettings.DEVICES) {
+      if (testCountry) device['browserstack.geoLocation'] = testCountry;
       await sendModule.checkSend(URL, false, device);
     }
 
