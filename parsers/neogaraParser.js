@@ -11,35 +11,36 @@ const request = axios.create({
   }
 })
 
-// const NeogaraGetConversions = async (options ={}) =>{
-//   try {
+const NeogaraGetConversions = async (startDate) =>{
+  try {
 
-//     // startDate = encodeURIComponent(startDate);
-//     // finishDate = encodeURIComponent(finishDate);
+    startDate = await encodeURIComponent(startDate);
+    console.log(startDate);
+    // finishDate = encodeURIComponent(finishDate);
 
-//     // console.log(`?filter=%7B"createdAt%7C%7C%24gte"%3A"${startDate}"%2C"createdAt%7C%7C%24lte"%3A"${finishDate}"%7D&order=DESC&page=1&perPage=25&sort=id`);
+    // console.log(`?filter=%7B"createdAt%7C%7C%24gte"%3A"${startDate}"%2C"createdAt%7C%7C%24lte"%3A"${finishDate}"%7D&order=DESC&page=1&perPage=25&sort=id`);
     
 
+    // const limit = parseInt(options.limit) || 10
+    const data = await request.get(`conversions?filter%5B0%5D=createdAt%7C%7C%24gte%7C%7C${startDate}&filter%5B1%5D=lid.providerId%7C%7C%24in%7C%7C122&limit=10&page=1&sort%5B0%5D=id%2CDESC&offset=0`).then(res => {return res.data.data})
+    return data.map(l => {return {email: l.lid.email, device: l.lid.userAgent, ref: l.lid.ref, createdAt: l.lid.createdAt}})
+  } catch (error) {
+    return error
+  }
+}
+
+// const NeogaraGetConversions = async (options ={}) =>{
+//   try {
 //     const limit = parseInt(options.limit) || 10
-//     const data = await request.get(`conversions?filter=%7B"createdAt%7C%7C%24gte"%3A"2021-01-20T11%3A36%3A00.000Z"%2C"createdAt%7C%7C%24lte"%3A"2021-01-21T11%3A36%3A00.000Z"%7D&order=DESC&page=1&perPage=25&sort=id`).then(res => {return res.data.data})
+//     const data = await request.get(`conversions?limit=${limit}&page=1&sort%5B0%5D=id%2CDESC&offset=0`).then(res => {return res.data.data})
 //     return data.map(l => {return {email: l.lid.email, device: l.lid.userAgent, ref: l.lid.ref}})
 //   } catch (error) {
 //     return error
 //   }
 // }
 
-const NeogaraGetConversions = async (options ={}) =>{
-  try {
-    const limit = parseInt(options.limit) || 10
-    const data = await request.get(`conversions?limit=${limit}&page=1&sort%5B0%5D=id%2CDESC&offset=0`).then(res => {return res.data.data})
-    return data.map(l => {return {email: l.lid.email, device: l.lid.userAgent, ref: l.lid.ref}})
-  } catch (error) {
-    return error
-  }
-}
-
 module.exports.NeogaraGetConversions = NeogaraGetConversions;
 
 // (async ()=>{
-//   console.log(await NeogaraGetConversions());
+//   console.log(await NeogaraGetConversions('2021-01-25T08:14:50.410Z'));
 // })()
