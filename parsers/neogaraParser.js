@@ -22,7 +22,7 @@ const NeogaraGetConversions = async (startDate) =>{
     
 
     // const limit = parseInt(options.limit) || 10
-    const data = await request.get(`conversions?filter%5B0%5D=createdAt%7C%7C%24gte%7C%7C${startDate}&filter%5B1%5D=lid.providerId%7C%7C%24in%7C%7C122&limit=10&page=1&sort%5B0%5D=id%2CDESC&offset=0`).then(res => {return res.data.data})
+    const data = await request.get(`conversions?filter%5B0%5D=lid.email%7C%7C%24cont%7C%7Ctestmail5%40gmail.com&filter%5B1%5D=createdAt%7C%7C%24gte%7C%7C${startDate}&limit=25&page=1&sort%5B0%5D=id%2CDESC&offset=0`).then(res => {return res.data.data})
     return data.map(l => {return {email: l.lid.email, device: l.lid.userAgent, ref: l.lid.ref, createdAt: l.lid.createdAt}})
   } catch (error) {
     return error
