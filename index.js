@@ -5,7 +5,7 @@ const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
-const countries = ['PL', 'UA', 'RU'];
+const countries = ['PL', 'UA', 'RU', 'EN', 'GR', 'GB', 'HR', 'HU', 'HK', 'PH', 'ZA', 'IT', 'ES', 'FR', 'NL', 'CH', 'CA', 'CZ', 'SK', 'KR', 'SI', 'SG', 'DE', 'TR', 'AE', 'IS', 'AU', 'BE', 'GB', 'HK', 'FI', 'NL', 'NO', 'NZ', 'CH', 'CA', 'SE', 'DK', 'DE', 'AU', 'AT', 'IE'];
 
 let myArgs = String(process.argv.slice(2));
 myArgs = myArgs.split(',');
