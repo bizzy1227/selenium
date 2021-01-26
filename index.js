@@ -5,6 +5,7 @@ const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
+const { url } = require("inspector");
 const countries = ['PL', 'UA', 'RU', 'EN', 'GR', 'GB', 'HR', 'HU', 'HK', 'PH', 'ZA', 'IT', 'ES', 'FR', 'NL', 'CH', 'CA', 'CZ', 'SK', 'KR', 'SI', 'SG', 'DE', 'TR', 'AE', 'IS', 'AU', 'BE', 'GB', 'HK', 'FI', 'NL', 'NO', 'NZ', 'CH', 'CA', 'SE', 'DK', 'DE', 'AU', 'AT', 'IE'];
 
 let myArgs = String(process.argv.slice(2));
@@ -42,16 +43,23 @@ siteQuery = siteQuery.split('\n');
   for (let i of siteQuery) {
     startDate = new Date().toISOString();
     console.log(startDate);
-    let URL = '';
+    let inputURL = '';
     // проверка на домен и если надо добавляем https://
-    if (i.match(/^https:\/\//)) URL = i;
-    else URL = 'https://' + i + '/';
+    if (i.match(/^https:\/\//)) inputURL = i;
+    else inputURL = 'https://' + i + '/';
+
+    let nodeUrl = new URL(inputURL);
+    // console.log('input', nodeUrl);
+    // console.log('host', nodeUrl.host);
+    // console.log('hostname', nodeUrl.hostname);
+    // console.log('href', nodeUrl.href);
+    // console.log('pathname', nodeUrl.pathname);
   
     // добавляем в очередь страницу thanks.php если был установлен флаг --with-thanks
-    if (processThanksPage) {
-        webErrorsModule.processUrl(`${URL}thanks.php`, fastMode);
-        await sleep();
-    }
+    // if (processThanksPage) {
+    //     webErrorsModule.processUrl(`${URL}thanks.php`, fastMode);
+    //     await sleep();
+    // }
     // webErrorsModule.processUrl(URL, fastMode);
     // lighthouseModule.checkLighthouse(URL);
     // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
@@ -63,7 +71,7 @@ siteQuery = siteQuery.split('\n');
     // const result = await Promisses.All(promises)
 
     // запуск локально для сбора ошибок консоли
-    await sendModule.checkSend(URL, true);
+    await sendModule.checkSend(nodeUrl.href, true);
 
     // запуск для теста формы с определенной страны
     if (testCountry) {
@@ -79,15 +87,15 @@ siteQuery = siteQuery.split('\n');
         'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN',
         'browserstack.geoLocation': testCountry
        };
-       await sendModule.checkSend(URL, false, device);
+       await sendModule.checkSend(nodeUrl.href, false, device);
     } 
 
     // запуск для теста формы для разных девайсов
     for (let device of deviceSettings.DEVICES) {
-      await sendModule.checkSend(URL, false, device);
+      await sendModule.checkSend(nodeUrl.href, false, device);
     }
 
-    await checkNeogara(startDate, i);
+    await checkNeogara(startDate, nodeUrl);
     // await sleep();
   }
   
@@ -106,27 +114,28 @@ function getDelay() {
 }
 
 // checkNeogara для работы с сайтами в каждой итерации
-async function checkNeogara(startDate, URL) {
+async function checkNeogara(startDate, Url) {
   const neogararesults = await parseNeogara.NeogaraGetConversions(startDate);
 
   console.log('neogararesults', neogararesults);
 
   console.log('in checkNeogara');
   let lastResultObj = {};
-  lastResultObj[URL] = [];
+  lastResultObj[Url.host] = [];
 
   console.log('empty', lastResultObj);
 
   for (let ngIndex of neogararesults) {
-    if (ngIndex.ref.indexOf(URL) !== -1 && ngIndex.email === 'testmail5@gmail.com') {
-      lastResultObj[URL].push(ngIndex);
+    let neogaraUrl = new URL(ngIndex.ref);
+    if (neogaraUrl.host === Url.host && ngIndex.email === 'testmail5@gmail.com') {
+      lastResultObj[Url.host].push(ngIndex);
     }
   }
 
   console.log('after push', lastResultObj);
 
-  if (lastResultObj[URL].length === deviceSettings.DEVICES.length + 1) {
-    delete lastResultObj[URL];
+  if (lastResultObj[Url.host].length === deviceSettings.DEVICES.length + 1) {
+    delete lastResultObj[Url.host];
   }
 
   console.log('after deleted', lastResultObj);
