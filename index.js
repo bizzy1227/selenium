@@ -46,7 +46,7 @@ siteQuery = siteQuery.split('\n');
     let inputURL = '';
     // проверка на домен и если надо добавляем https://
     if (i.match(/^https:\/\//)) inputURL = i;
-    else inputURL = 'https://' + i + '/';
+    else inputURL = 'https://' + i;
 
     let nodeUrl = new URL(inputURL);
     // console.log('input', nodeUrl);

@@ -127,12 +127,12 @@ async function fillForm(driver, URL, i) {
     await clickBtn(submit, i);
 
     
-    // await driver.sleep(5000);
-    const documentInitialised = async function() {
-        if (oldUrl !== await driver.getCurrentUrl()) return true;
-        else return false;
-    }
-    await driver.wait(() => documentInitialised(), 30000);
+    await driver.sleep(5000);
+    // const documentInitialised = async function() {
+    //     if (oldUrl !== await driver.getCurrentUrl()) return true;
+    //     else return false;
+    // }
+    // await driver.wait(() => documentInitialised(), 30000);
     
     await checkLastUrl(driver, URL);
 }
