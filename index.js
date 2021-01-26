@@ -5,7 +5,6 @@ const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
-const { url } = require("inspector");
 const countries = ['PL', 'UA', 'RU', 'EN', 'GR', 'GB', 'HR', 'HU', 'HK', 'PH', 'ZA', 'IT', 'ES', 'FR', 'NL', 'CH', 'CA', 'CZ', 'SK', 'KR', 'SI', 'SG', 'DE', 'TR', 'AE', 'IS', 'AU', 'BE', 'GB', 'HK', 'FI', 'NL', 'NO', 'NZ', 'CH', 'CA', 'SE', 'DK', 'DE', 'AU', 'AT', 'IE'];
 
 let myArgs = String(process.argv.slice(2));
@@ -25,6 +24,8 @@ if (countries.includes(myArgs[0])) testCountry = myArgs[0];
 
 let startDate;
 let sendFormErrors = [];
+const promises = [];
+let lastResultObj = {};
 
 // получаем список сайтов
 let siteQuery = fs.readFileSync("./input.txt", "utf8");
@@ -37,72 +38,81 @@ siteQuery = siteQuery.split('\n');
   //   this.setTime(this.getTime() + (h*60*60*1000));
   //   return this;
   // }
-  // startDate = new Date().toISOString();
-  // console.log(startDate);
+  startDate = new Date().toISOString();
+  console.log(startDate);
   
   for (let i of siteQuery) {
-    startDate = new Date().toISOString();
-    console.log(startDate);
     let inputURL = '';
     // проверка на домен и если надо добавляем https://
     if (i.match(/^https:\/\//)) inputURL = i;
     else inputURL = 'https://' + i;
-
-    let nodeUrl = new URL(inputURL);
-    // console.log('input', nodeUrl);
-    // console.log('host', nodeUrl.host);
-    // console.log('hostname', nodeUrl.hostname);
-    // console.log('href', nodeUrl.href);
-    // console.log('pathname', nodeUrl.pathname);
   
-    // добавляем в очередь страницу thanks.php если был установлен флаг --with-thanks
-    // if (processThanksPage) {
-    //     webErrorsModule.processUrl(`${URL}thanks.php`, fastMode);
-    //     await sleep();
-    // }
-    // webErrorsModule.processUrl(URL, fastMode);
-    // lighthouseModule.checkLighthouse(URL);
-    // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
+    let nodeUrl = new URL(inputURL);
 
-    // const promises = []
-    // promises.push(someFunc1())
-    // promises.push(someFunc2())
-    // promises.push(someFunc3())
-    // const result = await Promisses.All(promises)
-
-    // запуск локально для сбора ошибок консоли
-    await sendModule.checkSend(nodeUrl.href, true);
-
-    // запуск для теста формы с определенной страны
-    if (testCountry) {
-      let device = {
-        'os_version' : '10',
-        'resolution' : '1920x1080',
-        'browserName' : 'Chrome',
-        'browser_version' : '87.0',
-        'os' : 'Windows',
-        'name': 'BStack-[NodeJS] Sample Test', // test name
-        'build': 'BStack Build Number 1', // CI/CD job or build name
-        'browserstack.user' : 'yaroslavsolovev1',
-        'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN',
-        'browserstack.geoLocation': testCountry
-       };
-       await sendModule.checkSend(nodeUrl.href, false, device);
-    } 
-
-    // запуск для теста формы для разных девайсов
-    for (let device of deviceSettings.DEVICES) {
-      await sendModule.checkSend(nodeUrl.href, false, device);
-    }
-
-    await checkNeogara(startDate, nodeUrl);
+    promises.push(processSite(nodeUrl));
     // await sleep();
   }
-  
-  if (sendFormErrors.length > 0) console.log('Has Errors send form', sendFormErrors);
-  else console.log('Test send form done', sendFormErrors);
+
+  const result = await Promise.all(promises);
+  let neogaraRes = await checkNeogara(startDate);
+  if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form', lastResultObj);
+  else console.log('Test send form done', lastResultObj);
 
 })();
+
+
+async function processSite(nodeUrl) {
+
+
+  // console.log('input', nodeUrl);
+  // console.log('host', nodeUrl.host);
+  // console.log('hostname', nodeUrl.hostname);
+  // console.log('href', nodeUrl.href);
+  // console.log('pathname', nodeUrl.pathname);
+  // throw Error('stop');
+
+  // добавляем в очередь страницу thanks.php если был установлен флаг --with-thanks
+  // if (processThanksPage) {
+  //     webErrorsModule.processUrl(`${URL}thanks.php`, fastMode);
+  //     await sleep();
+  // }
+  // webErrorsModule.processUrl(URL, fastMode);
+  // lighthouseModule.checkLighthouse(URL);
+  // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
+
+  // const promises = []
+  // promises.push(someFunc1())
+  // promises.push(someFunc2())
+  // promises.push(someFunc3())
+  // const result = await Promisses.All(promises)
+
+  // запуск локально для сбора ошибок консоли
+  await sendModule.checkSend(nodeUrl.href, true);
+
+  // запуск для теста формы с определенной страны
+  if (testCountry) {
+    let device = {
+      'os_version' : '10',
+      'resolution' : '1920x1080',
+      'browserName' : 'Chrome',
+      'browser_version' : '87.0',
+      'os' : 'Windows',
+      'name': 'BStack-[NodeJS] Sample Test', // test name
+      'build': 'BStack Build Number 1', // CI/CD job or build name
+      'browserstack.user' : 'yaroslavsolovev1',
+      'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN',
+      'browserstack.geoLocation': testCountry
+     };
+     await sendModule.checkSend(nodeUrl.href, false, device);
+  } 
+
+  // запуск для теста формы для разных девайсов
+  // for (let device of deviceSettings.DEVICES) {
+  //   await sendModule.checkSend(nodeUrl.href, false, device);
+  // }
+
+  // await checkNeogara(startDate, nodeUrl);
+}
 
 function sleep() {
     return new Promise(resolve => setTimeout(resolve, getDelay()));
@@ -114,73 +124,102 @@ function getDelay() {
 }
 
 // checkNeogara для работы с сайтами в каждой итерации
-async function checkNeogara(startDate, Url) {
+// async function checkNeogara(startDate, Url) {
+//   const neogararesults = await parseNeogara.NeogaraGetConversions(startDate);
+
+//   console.log('neogararesults', neogararesults);
+
+//   console.log('in checkNeogara');
+//   let lastResultObj = {};
+//   lastResultObj[Url.host] = [];
+
+//   console.log('empty', lastResultObj);
+
+//   for (let ngIndex of neogararesults) {
+//     let neogaraUrl = new URL(ngIndex.ref);
+//     if (neogaraUrl.host === Url.host && ngIndex.email === 'testmail5@gmail.com') {
+//       lastResultObj[Url.href].push(ngIndex);
+//     }
+//   }
+
+//   console.log('after push', lastResultObj);
+
+//   if (lastResultObj[Url.href].length === deviceSettings.DEVICES.length + 1) {
+//     delete lastResultObj[Url.href];
+//   }
+
+//   console.log('after deleted', lastResultObj);
+
+//   if (Object.keys(lastResultObj).length !== 0) sendFormErrors.push(lastResultObj);
+
+// }
+
+// checkNeogara для работы с сайтами после всех итераций
+async function checkNeogara(startDate) {
+  console.log('in checkNeogara', startDate);
+  
   const neogararesults = await parseNeogara.NeogaraGetConversions(startDate);
+  console.log('neogararesults', typeof neogararesults);
+  // console.log(siteQuery);
+  
+  for (let sqIndex of siteQuery) {
+    lastResultObj[sqIndex] = [];
+  }
 
-  console.log('neogararesults', neogararesults);
+  console.log('lastResultObj empty: ', lastResultObj);
+  console.log('teeeest', neogararesults);
+  
+  let count = neogararesults.count;
+  let total = neogararesults.total;
+  // добавляем +1 для следующего запроса
+  let page =  neogararesults.page + 1;
+  let pageCount = neogararesults.pageCount;
 
-  console.log('in checkNeogara');
-  let lastResultObj = {};
-  lastResultObj[Url.host] = [];
+  let allConversions = [];
+  // пушим сразу первые данные
+  // allConversions.push(neogararesults);
+  neogararesults.forEach(conv => allConversions.push(conv));
 
-  console.log('empty', lastResultObj);
+  console.log('first push convi', allConversions);
+  
 
-  for (let ngIndex of neogararesults) {
-    let neogaraUrl = new URL(ngIndex.ref);
-    if (neogaraUrl.host === Url.host && ngIndex.email === 'testmail5@gmail.com') {
-      lastResultObj[Url.host].push(ngIndex);
+  // пушим следующие конверсии в массив
+  if(pageCount > 1) {
+    for (page; page <= pageCount; page++) {
+      let newConvs = await parseNeogara.NeogaraGetConversions(startDate, page);
+      await newConvs.forEach(conv => allConversions.push(conv));
     }
   }
 
-  console.log('after push', lastResultObj);
+  console.log('all allConversions', allConversions);
+  
 
-  if (lastResultObj[Url.host].length === deviceSettings.DEVICES.length + 1) {
-    delete lastResultObj[Url.host];
+  for (let conversion of allConversions) {
+    for (let sqIndex of siteQuery) {
+      if (conversion.ref.indexOf(sqIndex) !== -1 && conversion.email === 'testmail5@gmail.com') {
+        lastResultObj[sqIndex].push(conversion);
+      }
+    }
   }
 
-  console.log('after deleted', lastResultObj);
+  console.log('lastResultObj before check: ', lastResultObj);
 
-  if (Object.keys(lastResultObj).length !== 0) sendFormErrors.push(lastResultObj);
+  // в конце удаляем те сайты, которые имеют в себе лидов ровно столько сколько было отправлено форм
+  // если лидо не ровно - какая-то отправка сфейлилась
+  for (let key in lastResultObj) {
+    if (lastResultObj[key].length === 1) {
+      delete lastResultObj[key];
+    }
+  }
 
+  console.log('lastResultObj after delete: ', lastResultObj);
+
+  // if (Object.keys(lastResultObj).length !== 0) sendFormErrors.push(lastResultObj);
+  // if (Object.keys(lastResultObj).length !== 0) {
+
+  //   console.log('Has Errors send form');
+  // } 
 }
-
-// checkNeogara для работы с сайтами после всех итераций
-// async function checkNeogara(startDate) {
-//   console.log('in checkNeogara');
-  
-//   const neogararesults = await parseNeogara.NeogaraGetConversions(startDate);
-//   // console.log(neogararesults);
-//   // console.log(siteQuery);
-//   let lastResultObj = {};
-
-//   // создаю поля для каждого сайта из списка
-//   for (let sqIndex of siteQuery) {
-//     lastResultObj[sqIndex] = [];
-//   }
-//   console.log('lastResultObj empty: ', lastResultObj);
-//   // для каждого пришедшего мыла с неогары подбираем сайт из нашего списка
-//   // при совпадении пушим инфу о лиде под соответствующий сайт
-//   for (let ngIndex of neogararesults) {
-//     for (let sqIndex of siteQuery) {
-//       if (ngIndex.ref.indexOf(sqIndex) !== -1 && ngIndex.email === 'testmail5@gmail.com') {
-//         lastResultObj[sqIndex].push(ngIndex);
-//       }
-//     }
-//   }
-//   console.log('lastResultObj before check: ', lastResultObj);
-//   // в конце удаляем те сайты, которые имеют в себе лидов ровно столько сколько было отправлено форм
-//   // если лидо не ровно - какая-то отправка сфейлилась
-//   for (let key in lastResultObj) {
-//     if (lastResultObj[key].length === deviceSettings.DEVICES.length + 1) {
-//       delete lastResultObj[key];
-//     }
-//   }
-//   console.log('lastResultObj after check: ', lastResultObj);
-//   if (Object.keys(lastResultObj).length !== 0) {
-
-//     console.log('Has Errors send form');
-//   } 
-// }
 
 // 'browserstack.user' : 'yaroslavsolovev1',
 // 'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
