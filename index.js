@@ -26,6 +26,7 @@ let startDate;
 let sendFormErrors = [];
 const promises = [];
 let lastResultObj = {};
+let additionalСhecks = 1;
 
 // получаем список сайтов
 let siteQuery = fs.readFileSync("./input.txt", "utf8");
@@ -91,6 +92,7 @@ async function processSite(nodeUrl) {
 
   // запуск для теста формы с определенной страны
   if (testCountry) {
+    additionalСhecks++;
     let device = {
       'os_version' : '10',
       'resolution' : '1920x1080',
@@ -169,11 +171,28 @@ async function checkNeogara(startDate) {
   console.log('lastResultObj empty: ', lastResultObj);
   console.log('teeeest', neogararesults);
   
-  let count = neogararesults.count;
-  let total = neogararesults.total;
+  let count = neogararesults[0].totals.count;
+  let total = neogararesults[0].totals.total;
   // добавляем +1 для следующего запроса
-  let page =  neogararesults.page + 1;
-  let pageCount = neogararesults.pageCount;
+  let page = neogararesults[0].totals.page + 1;
+  let pageCount = neogararesults[0].totals.pageCount;
+
+
+  // console.log('siteQuery.length:', siteQuery.length);
+  // console.log('deviceSettings.DEVICES.length:', deviceSettings.DEVICES.length);
+  // console.log('additionalСhecks:', additionalСhecks);
+  // console.log('total:', total);
+  // console.log('count:', count);
+  // console.log('page:', page);
+  // console.log('pageCount:', pageCount);
+  // console.log('res:', siteQuery.length * (deviceSettings.DEVICES.length + additionalСhecks));
+  
+  // возвращаемся из функции если совпало количество конверсий с количеством запросов
+  if (total === siteQuery.length * (deviceSettings.DEVICES.length + additionalСhecks)) {
+    console.log('better outcome condition');
+    lastResultObj = {};
+    return lastResultObj;
+  }  
 
   let allConversions = [];
   // пушим сразу первые данные
@@ -207,7 +226,7 @@ async function checkNeogara(startDate) {
   // в конце удаляем те сайты, которые имеют в себе лидов ровно столько сколько было отправлено форм
   // если лидо не ровно - какая-то отправка сфейлилась
   for (let key in lastResultObj) {
-    if (lastResultObj[key].length === deviceSettings.DEVICES.length + 1) {
+    if (lastResultObj[key].length === deviceSettings.DEVICES.length + additionalСhecks) {
       delete lastResultObj[key];
     }
   }

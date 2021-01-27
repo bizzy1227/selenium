@@ -161,7 +161,7 @@ async function checkLastUrl(driver) {
     let currentUrl = await driver.getCurrentUrl();
     currentUrl = new URL(currentUrl);
     console.log('crrURL.pathname', currentUrl.pathname);
-    console.log('currentUrl.pathname === "thanks.php"', currentUrl.pathname === '/thanks.php');
+    console.log('currentUrl.pathname === "/thanks.php"', currentUrl.pathname === '/thanks.php');
     
     if (! currentUrl.pathname === '/thanks.php') {
         countRedirect++;
