@@ -87,7 +87,7 @@ async function processSite(nodeUrl) {
   // const result = await Promisses.All(promises)
 
   // запуск локально для сбора ошибок консоли
-  await sendModule.checkSend(nodeUrl.href, true);
+  await sendModule.checkSend(nodeUrl, true);
 
   // запуск для теста формы с определенной страны
   if (testCountry) {
@@ -103,13 +103,13 @@ async function processSite(nodeUrl) {
       'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN',
       'browserstack.geoLocation': testCountry
      };
-     await sendModule.checkSend(nodeUrl.href, false, device);
+     await sendModule.checkSend(nodeUrl, false, device);
   } 
 
   // запуск для теста формы для разных девайсов
-  // for (let device of deviceSettings.DEVICES) {
-  //   await sendModule.checkSend(nodeUrl.href, false, device);
-  // }
+  for (let device of deviceSettings.DEVICES) {
+    await sendModule.checkSend(nodeUrl, false, device);
+  }
 
   // await checkNeogara(startDate, nodeUrl);
 }
@@ -207,7 +207,7 @@ async function checkNeogara(startDate) {
   // в конце удаляем те сайты, которые имеют в себе лидов ровно столько сколько было отправлено форм
   // если лидо не ровно - какая-то отправка сфейлилась
   for (let key in lastResultObj) {
-    if (lastResultObj[key].length === 1) {
+    if (lastResultObj[key].length === deviceSettings.DEVICES.length + 1) {
       delete lastResultObj[key];
     }
   }

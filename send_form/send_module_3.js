@@ -11,6 +11,7 @@ let capabilities = false;
 let processWebErrors = false;
 
 const checkSend  = async function(URL, getWebErr, cp = false) {
+    
     console.log('in checkSend');
     let driver;
     capabilities = cp;
@@ -61,7 +62,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
     }
 
     try {
-        await driver.get(URL);
+        await driver.get(URL.href);
         // driver.sleep(5000);
 
         await checkForm(driver, URL);
@@ -85,7 +86,7 @@ async function checkForm(driver, URL) {
 
     console.log('in checkForm');
     // получаем ошибки консоли
-    if (processWebErrors) await webErrorsModule.processUrl(URL, false, driver, capabilities);
+    if (processWebErrors) await webErrorsModule.processUrl(URL.href, false, driver, capabilities);
 
     let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
@@ -125,7 +126,7 @@ async function checkForm(driver, URL) {
 }
 
 async function fillForm(driver, URL, i) {
-    let oldUrl = URL;
+    let oldUrl = URL.href;
     console.log('in fillForm');
 
     let firstname = await driver.findElements(By.name('firstname'));
@@ -151,39 +152,41 @@ async function fillForm(driver, URL, i) {
     // }
     // await driver.wait(() => documentInitialised(), 30000);
     
-    await checkLastUrl(driver, URL);
+    await checkLastUrl(driver);
 }
 
-async function checkLastUrl(driver, URL) {
+async function checkLastUrl(driver) {
     console.log('in checkLastUrl');
 
     let currentUrl = await driver.getCurrentUrl();
-    console.log('crrURL', currentUrl);
+    currentUrl = new URL(currentUrl);
+    console.log('crrURL.pathname', currentUrl.pathname);
+    console.log('currentUrl.pathname === "thanks.php"', currentUrl.pathname === '/thanks.php');
     
-    if (! await currentUrl.match(/thanks.php$/)) {
+    if (! currentUrl.pathname === '/thanks.php') {
         countRedirect++;
         if (countRedirect < 3) await checkForm(driver, currentUrl);
         else {
-            console.log(`The limit (${countRedirect}) of clicks on links has been exceeded`, URL);
+            console.log(`The limit (${countRedirect}) of clicks on links has been exceeded`, currentUrl.href);
             countRedirect = 0;
             logger.log({
                 level: 'error',
                 message: `The limit (${countRedirect}) of clicks on links has been exceeded`,
-                URL: currentUrl
+                URL: currentUrl.href
             });
         }
-    } else if (await currentUrl.match(/thanks.php$/)) {
+    } else if (currentUrl.pathname === '/thanks.php') {
         // получаем ошибки консоли страницы thanks.php
-        if (processWebErrors) await webErrorsModule.processUrl(URL, false, driver, capabilities);
+        if (processWebErrors) await webErrorsModule.processUrl(currentUrl.href, false, driver, capabilities);
         countRedirect = 0;
-        console.log('Test send form done', URL);
+        console.log('Test send form done', currentUrl.href);
         driver.quit();
         return;
     } else {
         logger.log({
             level: 'error',
             message: 'Test send form failed',
-            URL: currentUrl
+            URL: currentUrl.href
         });
         driver.quit();
     }
