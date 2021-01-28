@@ -32,8 +32,10 @@ let additionalСhecks = 1;
 let siteQuery = fs.readFileSync("./input.txt", "utf8");
 siteQuery = siteQuery.replace(/\r/g, '');
 siteQuery = siteQuery.split('\n');
+let updatedSiteQuery = [];
 
 (async function run() {
+  
   // настрока времени старта
   // Date.prototype.addHours = function(h) {
   //   this.setTime(this.getTime() + (h*60*60*1000));
@@ -49,6 +51,8 @@ siteQuery = siteQuery.split('\n');
     else inputURL = 'https://' + i;
   
     let nodeUrl = new URL(inputURL);
+    // создаю массив коректных урлов 
+    updatedSiteQuery.push(nodeUrl.href);
 
     promises.push(processSite(nodeUrl));
     // await sleep();
@@ -164,7 +168,7 @@ async function checkNeogara(startDate) {
   console.log('neogararesults', typeof neogararesults);
   // console.log(siteQuery);
   
-  for (let sqIndex of siteQuery) {
+  for (let sqIndex of updatedSiteQuery) {
     lastResultObj[sqIndex] = [];
   }
 
@@ -188,7 +192,7 @@ async function checkNeogara(startDate) {
   // console.log('res:', siteQuery.length * (deviceSettings.DEVICES.length + additionalСhecks));
   
   // возвращаемся из функции если совпало количество конверсий с количеством запросов
-  if (total === siteQuery.length * (deviceSettings.DEVICES.length + additionalСhecks)) {
+  if (total === updatedSiteQuery.length * (deviceSettings.DEVICES.length + additionalСhecks)) {
     console.log('better outcome condition');
     lastResultObj = {};
     return lastResultObj;
@@ -215,7 +219,7 @@ async function checkNeogara(startDate) {
 
   for (let conversion of allConversions) {
     let convNodeUrl = new URL(conversion.ref);
-    for (let sqIndex of siteQuery) {
+    for (let sqIndex of updatedSiteQuery) {
       let queryNodeUrl = new URL(sqIndex);
       if (convNodeUrl.host === queryNodeUrl.host && conversion.email === 'testmail5@gmail.com') {
         lastResultObj[sqIndex].push(conversion);
