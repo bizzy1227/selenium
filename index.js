@@ -214,8 +214,10 @@ async function checkNeogara(startDate) {
   
 
   for (let conversion of allConversions) {
+    let convNodeUrl = new URL(conversion.ref);
     for (let sqIndex of siteQuery) {
-      if (conversion.ref.indexOf(sqIndex) !== -1 && conversion.email === 'testmail5@gmail.com') {
+      let queryNodeUrl = new URL(sqIndex);
+      if (convNodeUrl.host === queryNodeUrl.host && conversion.email === 'testmail5@gmail.com') {
         lastResultObj[sqIndex].push(conversion);
       }
     }

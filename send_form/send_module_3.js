@@ -62,6 +62,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
     }
 
     try {
+
         await driver.get(URL.href);
         // driver.sleep(5000);
 
@@ -80,13 +81,13 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
 
 }
 
-async function checkForm(driver, URL) {
+async function checkForm(driver, inputURL) {
     // записываем текущую вкладку
     // const originalWindow = await driver.getWindowHandle();
 
     console.log('in checkForm');
     // получаем ошибки консоли
-    if (processWebErrors) await webErrorsModule.processUrl(URL.href, false, driver, capabilities);
+    if (processWebErrors) await webErrorsModule.processUrl(inputURL.href, false, driver, capabilities);
 
     let indexElements = 0;
     let form = await driver.findElements(By.css('form'));
@@ -95,13 +96,13 @@ async function checkForm(driver, URL) {
     // если есть форма
     if (form.length > 0) {
         if (!await form[indexElements].isDisplayed()) indexElements = 1;
-        await fillForm(driver, URL, indexElements);
+        await fillForm(driver, inputURL, indexElements);
     } 
     else {
-    // если нет формы
-    console.log('in block no form');
-    const originalWindow = await driver.getWindowHandle();
-    console.log('originalWindow.length',  originalWindow.length);
+        // если нет формы
+        console.log('in block no form');
+        const originalWindow = await driver.getWindowHandle();
+        console.log('originalWindow.length',  originalWindow.length);
         let link = await driver.findElement(By.xpath('//a'));
         // проверка открывается ли ссылка в новой вкладке
         let targetLink = await link.getAttribute('target');
@@ -127,7 +128,7 @@ async function checkForm(driver, URL) {
         // await driver.wait(until.elementLocated(By.css('form')), 10000);
         await driver.sleep(5000);
 
-        let currentUrl = await driver.getCurrentUrl();
+        let currentUrl = new URL(await driver.getCurrentUrl());
         await checkForm(driver, currentUrl);
     } 
 }
@@ -135,6 +136,15 @@ async function checkForm(driver, URL) {
 async function fillForm(driver, URL, i) {
     let oldUrl = URL.href;
     console.log('in fillForm');
+
+    let search_params = URL.searchParams;
+
+    search_params.set('action', 'test');
+    search_params.set('pid', 'kag318');
+    search_params.set('group', '1');
+
+    URL.search = search_params.toString();
+    await await driver.get(URL.href);
 
     let firstname = await driver.findElements(By.name('firstname'));
     await setValue('firstname', firstname.length, firstname, i); 
