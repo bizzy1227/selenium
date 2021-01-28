@@ -82,7 +82,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
 
 async function checkForm(driver, URL) {
     // записываем текущую вкладку
-    const originalWindow = await driver.getWindowHandle();
+    // const originalWindow = await driver.getWindowHandle();
 
     console.log('in checkForm');
     // получаем ошибки консоли
@@ -100,16 +100,22 @@ async function checkForm(driver, URL) {
     else {
     // если нет формы
     console.log('in block no form');
+    const originalWindow = await driver.getWindowHandle();
+    console.log('originalWindow.length',  originalWindow.length);
         let link = await driver.findElement(By.xpath('//a'));
         // проверка открывается ли ссылка в новой вкладке
         let targetLink = await link.getAttribute('target');
+        let href = await link.getAttribute('href');
+        console.log('href', href);
         console.log('targetLink', targetLink);
         await link.click();
+        // await driver.get(href);
 
         // если открывается ссылка в новой вкладке
         if (targetLink === '_blank') {
             await driver.sleep(5000);
             const windows = await driver.getAllWindowHandles();
+            console.log('windows.length', windows.length);
             windows.forEach(async handle => {
                 if (handle !== originalWindow) {
                     await driver.switchTo().window(handle);
@@ -118,7 +124,8 @@ async function checkForm(driver, URL) {
         }
 
         // жду когда появится форма (возможно улучшить, что бы ждать загрузку страницы)
-        await driver.wait(until.elementLocated(By.css('form')), 10000);
+        // await driver.wait(until.elementLocated(By.css('form')), 10000);
+        await driver.sleep(5000);
 
         let currentUrl = await driver.getCurrentUrl();
         await checkForm(driver, currentUrl);
