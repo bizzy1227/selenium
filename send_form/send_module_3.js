@@ -37,10 +37,10 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
             - ключи от browserstack
             - ключи от neogara
         9. Переписать код с использование нодовского URL
-            maxegvnimsiaer.pl - проблемный сайт (это сайт с клоакой)
-            adbcodketet.info
-            quanhteulmsystem.ru
-            https://paettearon.info/kod.php
+            maxmeimibztzer.info
+            maxwesminzpzer.info
+            mazxemizer.info
+            koduyrurspeha.ru
     */
 
     logger = winston.createLogger({
