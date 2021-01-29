@@ -4,6 +4,7 @@ const sendModule = require('./send_form/send_module_3');
 const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
 const selfUpdateModule = require('./self_update/self_update_module');
+const checkJsonModule = require('./check_json/check_json_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
 const countries = ['PL', 'UA', 'RU', 'EN', 'GR', 'GB', 'HR', 'HU', 'HK', 'PH', 'ZA', 'IT', 'ES', 'FR', 'NL', 'CH', 'CA', 'CZ', 'SK', 'KR', 'SI', 'SG', 'DE', 'TR', 'AE', 'IS', 'AU', 'BE', 'GB', 'HK', 'FI', 'NL', 'NO', 'NZ', 'CH', 'CA', 'SE', 'DK', 'DE', 'AU', 'AT', 'IE'];
@@ -55,9 +56,6 @@ let updatedSiteQuery = [];
     // создаю массив коректных урлов 
     updatedSiteQuery.push(nodeUrl.href);
 
-    // делаю selfUpdate для каждого сайта
-    await selfUpdateModule.selfUpdate(nodeUrl.href);
-
     promises.push(processSite(nodeUrl));
     // await sleep();
   }
@@ -72,28 +70,11 @@ let updatedSiteQuery = [];
 
 async function processSite(nodeUrl) {
 
+  // делаю selfUpdate для каждого сайта
+  await selfUpdateModule.selfUpdate(nodeUrl.href);
 
-  // console.log('input', nodeUrl);
-  // console.log('host', nodeUrl.host);
-  // console.log('hostname', nodeUrl.hostname);
-  // console.log('href', nodeUrl.href);
-  // console.log('pathname', nodeUrl.pathname);
-  // throw Error('stop');
-
-  // добавляем в очередь страницу thanks.php если был установлен флаг --with-thanks
-  // if (processThanksPage) {
-  //     webErrorsModule.processUrl(`${URL}thanks.php`, fastMode);
-  //     await sleep();
-  // }
-  // webErrorsModule.processUrl(URL, fastMode);
-  // lighthouseModule.checkLighthouse(URL);
-  // второй необязательный параметр указывает на каком девайсе запустить тест (по дефолту тест начнется локально с запуском браузера)
-
-  // const promises = []
-  // promises.push(someFunc1())
-  // promises.push(someFunc2())
-  // promises.push(someFunc3())
-  // const result = await Promisses.All(promises)
+  // проверка settings.json на каждом сайте
+  await checkJsonModule.checkJson(nodeUrl.href);
 
   // запуск локально для сбора ошибок консоли
   await sendModule.checkSend(nodeUrl, true);
