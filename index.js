@@ -3,6 +3,7 @@ const fs = require("fs");
 const sendModule = require('./send_form/send_module_3');
 const webErrorsModule = require('./web_errors/web_errors_module');
 const lighthouseModule = require('./lighthouse/lighthouse_module');
+const selfUpdateModule = require('./self_update/self_update_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
 const countries = ['PL', 'UA', 'RU', 'EN', 'GR', 'GB', 'HR', 'HU', 'HK', 'PH', 'ZA', 'IT', 'ES', 'FR', 'NL', 'CH', 'CA', 'CZ', 'SK', 'KR', 'SI', 'SG', 'DE', 'TR', 'AE', 'IS', 'AU', 'BE', 'GB', 'HK', 'FI', 'NL', 'NO', 'NZ', 'CH', 'CA', 'SE', 'DK', 'DE', 'AU', 'AT', 'IE'];
@@ -53,6 +54,9 @@ let updatedSiteQuery = [];
     let nodeUrl = new URL(inputURL);
     // создаю массив коректных урлов 
     updatedSiteQuery.push(nodeUrl.href);
+
+    // делаю selfUpdate для каждого сайта
+    await selfUpdateModule.selfUpdate(nodeUrl.href);
 
     promises.push(processSite(nodeUrl));
     // await sleep();

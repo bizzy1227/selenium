@@ -24,7 +24,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
         1. Обработка сайтов с Клоакой (отслеживать по ссылкам на гугл, тильду. Передавать блэк страницы в обработку) +
         2. Протестить логи +-
             - пообварачивать все функции в try...catch для логирования
-        3. добавить selfUpdate для тестируемых сайтов
+        3. добавить selfUpdate для тестируемых сайтов +
         4. проверять поля settings.json.
         5. Работа с прокси для проверки стран локально.
         6. Вынести в константы:
@@ -101,6 +101,7 @@ async function checkForm(driver, inputURL) {
         const originalWindow = await driver.getWindowHandle();
         console.log('originalWindow.length',  originalWindow.length);
         let link = await driver.findElement(By.xpath('//a'));
+
         // проверка открывается ли ссылка в новой вкладке
         let targetLink = await link.getAttribute('target');
         let href = await link.getAttribute('href');
@@ -134,13 +135,13 @@ async function fillForm(driver, URL, i) {
     let oldUrl = URL.href;
     console.log('in fillForm');
 
-    let search_params = URL.searchParams;
-
-    search_params.set('action', 'test');
-    search_params.set('pid', 'kag318');
-    search_params.set('group', '1');
-
-    URL.search = search_params.toString();
+    // добавляем параметры для отправки на dev.neogara
+    let searchParams = URL.searchParams;
+    searchParams.set('action', 'test');
+    searchParams.set('pid', 'kag318');
+    searchParams.set('group', '1');
+    URL.search = searchParams.toString();
+    // переходим на ссылку с параметрами дял dev
     await await driver.get(URL.href);
 
     let firstname = await driver.findElements(By.name('firstname'));
