@@ -32,6 +32,7 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
             - ключи от browserstack
             - ключи от neogara
         7. Попробовать executeScript (при необходимости)
+        8. Тест настройки normal page load strategy
             maxmeimibztzer.info
             maxwesminzpzer.info
             mazxemizer.info
