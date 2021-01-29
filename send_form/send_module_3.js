@@ -68,7 +68,8 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
         logger.log({
             level: 'error',
             message: e.message,
-            URL: URL
+            URL: URL,
+            capabilities: capabilities
         });
         driver.quit();
     }
