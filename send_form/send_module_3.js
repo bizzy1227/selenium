@@ -2,21 +2,25 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
 const fs = require("fs");
 const winston = require('winston');
 const chrome = require('selenium-webdriver/chrome');
+let proxy = require('selenium-webdriver/proxy');
 const webErrorsModule = require('../web_errors/web_errors_module');
+let opts = new chrome.Options();
 
 let countRedirect = 0;
 let logger;
 
 let capabilities = false;
 let processWebErrors = false;
+let proxyAddress = false;
 
-const checkSend  = async function(URL, getWebErr, cp = false) {
+const checkSend  = async function(URL, getWebErr, cp, myProxy) {
     
     console.log('in checkSend');
     let driver;
     capabilities = cp;
     console.log('cp =', capabilities);
     processWebErrors = getWebErr;
+    proxyAddress = myProxy;
 
     console.log('run on', capabilities ? 'browser-stack' : 'browser');
 
@@ -52,8 +56,11 @@ const checkSend  = async function(URL, getWebErr, cp = false) {
         driver = await new Builder().usingServer('http://hub-cloud.browserstack.com/wd/hub')
         .withCapabilities(capabilities).build();
     } else {
+        console.log('useProxy', proxyAddress);
+        if (proxyAddress) opts.setProxy(proxy.manual({https: proxyAddress}));
+        opts.addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors'])
         driver = await new Builder().forBrowser('chrome')
-        .setChromeOptions(new chrome.Options().addArguments(['--ignore-certificate-errors', '--ignore-ssl-errors']))
+        .setChromeOptions(opts)
         .build();
     }
 

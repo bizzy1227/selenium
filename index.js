@@ -7,6 +7,7 @@ const selfUpdateModule = require('./self_update/self_update_module');
 const checkJsonModule = require('./check_json/check_json_module');
 const deviceSettings = require('./devices');
 const parseNeogara = require('./parsers/neogaraParser');
+const CONSTS = require('./consts')
 const countries = ['PL', 'UA', 'RU', 'EN', 'GR', 'GB', 'HR', 'HU', 'HK', 'PH', 'ZA', 'IT', 'ES', 'FR', 'NL', 'CH', 'CA', 'CZ', 'SK', 'KR', 'SI', 'SG', 'DE', 'TR', 'AE', 'IS', 'AU', 'BE', 'GB', 'HK', 'FI', 'NL', 'NO', 'NZ', 'CH', 'CA', 'SE', 'DK', 'DE', 'AU', 'AT', 'IE'];
 
 let myArgs = String(process.argv.slice(2));
@@ -77,41 +78,43 @@ async function processSite(nodeUrl) {
   await checkJsonModule.checkJson(nodeUrl.href);
 
   // запуск локально для сбора ошибок консоли
-  await sendModule.checkSend(nodeUrl, true);
+  await sendModule.checkSend(nodeUrl, true, false, false);
 
-  // запуск для теста формы с определенной страны
+  // запуск локально c с разных прокси
   if (testCountry) {
     additionalСhecks++;
-    let device = {
-      'os_version' : '10',
-      'resolution' : '1920x1080',
-      'browserName' : 'Chrome',
-      'browser_version' : '87.0',
-      'os' : 'Windows',
-      'name': 'BStack-[NodeJS] Sample Test', // test name
-      'build': 'BStack Build Number 1', // CI/CD job or build name
-      'browserstack.user' : 'yaroslavsolovev1',
-      'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN',
-      'browserstack.geoLocation': testCountry
-     };
-     await sendModule.checkSend(nodeUrl, false, device);
-  } 
+    await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
+  }
+
+  // запуск для теста формы с определенной страны для browserstack
+  // if (testCountry) {
+  //   additionalСhecks++;
+  //   let device = {
+  //     'os_version' : '10',
+  //     'resolution' : '1920x1080',
+  //     'browserName' : 'Chrome',
+  //     'browser_version' : '87.0',
+  //     'os' : 'Windows',
+  //     'name': 'BStack-[NodeJS] Sample Test', // test name
+  //     'build': 'BStack Build Number 1', // CI/CD job or build name
+  //     'browserstack.user' : 'yaroslavsolovev1',
+  //     'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN',
+  //     'browserstack.geoLocation': testCountry
+  //    };
+  //    await sendModule.checkSend(nodeUrl, false, device, false);
+  // } 
 
   // запуск для теста формы для разных девайсов
   for (let device of deviceSettings.DEVICES) {
-    await sendModule.checkSend(nodeUrl, false, device);
+    await sendModule.checkSend(nodeUrl, false, device, false);
   }
 
   // await checkNeogara(startDate, nodeUrl);
 }
 
-function sleep() {
-    return new Promise(resolve => setTimeout(resolve, getDelay()));
-}
-
-function getDelay() {
-    if (fastMode) return 1000;
-    else return 10000;
+async function getProxy(testCountry) {
+  if (testCountry) return CONSTS.PROXY[testCountry];
+  else return false;
 }
 
 // checkNeogara для работы с сайтами в каждой итерации
