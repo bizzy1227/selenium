@@ -106,6 +106,7 @@ async function processSite(nodeUrl) {
 
   // запуск для теста формы для разных девайсов
   for (let device of deviceSettings.DEVICES) {
+    additionalСhecks++;
     await sendModule.checkSend(nodeUrl, false, device, false);
   }
 
@@ -180,7 +181,7 @@ async function checkNeogara(startDate) {
   // console.log('res:', siteQuery.length * (deviceSettings.DEVICES.length + additionalСhecks));
   
   // возвращаемся из функции если совпало количество конверсий с количеством запросов
-  if (total === updatedSiteQuery.length * (deviceSettings.DEVICES.length + additionalСhecks)) {
+  if (total === updatedSiteQuery.length * additionalСhecks) {
     console.log('better outcome condition');
     lastResultObj = {};
     return lastResultObj;
@@ -220,7 +221,7 @@ async function checkNeogara(startDate) {
   // в конце удаляем те сайты, которые имеют в себе лидов ровно столько сколько было отправлено форм
   // если лидо не ровно - какая-то отправка сфейлилась
   for (let key in lastResultObj) {
-    if (lastResultObj[key].length === deviceSettings.DEVICES.length + additionalСhecks) {
+    if (lastResultObj[key].length === additionalСhecks) {
       delete lastResultObj[key];
     }
   }
