@@ -5,6 +5,7 @@ const chrome = require('selenium-webdriver/chrome');
 let proxy = require('selenium-webdriver/proxy');
 const webErrorsModule = require('../web_errors/web_errors_module');
 let opts = new chrome.Options();
+const CONSTS = require('../consts');
 
 let countRedirect = 0;
 let logger;
@@ -216,16 +217,10 @@ async function checkLastUrl(driver) {
 
 async function setValue(name, length, element, i) {
     console.log('in setValue');
-    
-    const userData = {
-        firstname: 'test',
-        lastname: 'test',
-        email: 'testmail5@gmail.com',
-        tel: 111111111
-    }
+
     if (length > 0) {
         await element[i].clear();
-        await element[i].sendKeys(userData[name]);
+        await element[i].sendKeys(CONSTS.USER_DATA[name]);
     } 
 
 }
