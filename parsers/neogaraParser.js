@@ -1,15 +1,14 @@
-// import { NEOGARA_AUTH_TOKEN, NEOGARA_CRM_URL } from '../consts.js'
+
 const axios = require('axios');
 // const NEOGARA_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibG9naW4iOiJqb2UiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTU5NzkyNzE1M30.WO-gSJ-oD3ob5ie4SvlOy3Zmx87rxfgPLRWXaFilWbg';
 // const NEOGARA_CRM_URL =  'https://admin.neogara.com/';
-const NEOGARA_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJhZG1pbiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNjEwOTg0OTYwfQ.Na4iOTVtX54dxGmKNmvpD4g_Z95-aJW8Nf7FPzOJwYE';
-const NEOGARA_CRM_URL =  'https://dev.admin.neogara.com/';
+const CONSTS = require('./consts');
 
 const request = axios.create({
-  baseURL: NEOGARA_CRM_URL,
+  baseURL: CONSTS.DEV_NEOGARA_CRM_URL,
   headers: {
     "accept": "application/json",
-    "authorization": `Bearer ${NEOGARA_AUTH_TOKEN}`,
+    "authorization": `Bearer ${CONSTS.DEV_NEOGARA_AUTH_TOKEN}`,
   }
 })
 
