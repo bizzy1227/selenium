@@ -2,7 +2,7 @@
 const axios = require('axios');
 // const NEOGARA_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibG9naW4iOiJqb2UiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTU5NzkyNzE1M30.WO-gSJ-oD3ob5ie4SvlOy3Zmx87rxfgPLRWXaFilWbg';
 // const NEOGARA_CRM_URL =  'https://admin.neogara.com/';
-const CONSTS = require('./consts');
+const CONSTS = require('../consts');
 
 const request = axios.create({
   baseURL: CONSTS.DEV_NEOGARA_CRM_URL,
