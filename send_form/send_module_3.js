@@ -31,6 +31,7 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
         1. разобратся почему не запускается checkNeogara если много сайтов + ошибка
         2. Писать ошибку в лог если нет поля в settings.json
         3. Тест настройки normal page load strategy
+        4. Сделать так что бы вспомогательные модули не ломали тест
             maxmeimibztzer.info
             maxwesminzpzer.info
             mazxemizer.info
