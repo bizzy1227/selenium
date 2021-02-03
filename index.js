@@ -72,19 +72,19 @@ let updatedSiteQuery = [];
 async function processSite(nodeUrl) {
 
   // делаю selfUpdate для каждого сайта
-  await selfUpdateModule.selfUpdate(nodeUrl.href);
+  // await selfUpdateModule.selfUpdate(nodeUrl.href);
 
   // проверка settings.json на каждом сайте
-  await checkJsonModule.checkJson(nodeUrl.href);
+  // await checkJsonModule.checkJson(nodeUrl.href);
 
   // запуск локально для сбора ошибок консоли
   await sendModule.checkSend(nodeUrl, true, false, false);
 
   // запуск локально c с разных прокси
-  if (testCountry) {
-    additionalСhecks++;
-    await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
-  }
+  // if (testCountry) {
+  //   additionalСhecks++;
+  //   await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
+  // }
 
   // запуск для теста формы с определенной страны для browserstack
   // if (testCountry) {
@@ -105,10 +105,10 @@ async function processSite(nodeUrl) {
   // } 
 
   // запуск для теста формы для разных девайсов
-  for (let device of deviceSettings.DEVICES) {
-    additionalСhecks++;
-    await sendModule.checkSend(nodeUrl, false, device, false);
-  }
+  // for (let device of deviceSettings.DEVICES) {
+  //   additionalСhecks++;
+  //   await sendModule.checkSend(nodeUrl, false, device, false);
+  // }
 
   // await checkNeogara(startDate, nodeUrl);
 }
@@ -228,6 +228,17 @@ async function checkNeogara(startDate) {
 
   console.log('lastResultObj after delete: ', lastResultObj);
 
+  // пушим в новый файл сайты которы имеют ошибку после теста
+  if (Object.keys(lastResultObj).length !== 0) {
+    let keysObj = Object.keys(lastResultObj)
+    console.log(keysObj);
+    keysObj.forEach(key => {
+      fs.appendFile('inputAfterTest.txt', key + '\n', function (err) {
+        if (err) throw err;
+      });
+    })
+    console.log('results saved!');
+  }
   // if (Object.keys(lastResultObj).length !== 0) sendFormErrors.push(lastResultObj);
   // if (Object.keys(lastResultObj).length !== 0) {
 
