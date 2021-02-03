@@ -26,19 +26,11 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
     console.log('run on', capabilities ? 'browser-stack' : 'browser');
 
     /*
-        0. Перезаписать input.txt, записав туда только сайты с ошибками для следующей проверки
-        1. Обработка сайтов с Клоакой (отслеживать по ссылкам на гугл, тильду. Передавать блэк страницы в обработку) +
-        2. Протестить логи +-
-            - пообварачивать все функции в try...catch для логирования
-        3. добавить selfUpdate для тестируемых сайтов +
-        4. проверять поля settings.json.
-        5. Работа с прокси для проверки стран локально.
-        6. Вынести в константы:
-            - данные для отправки формы
-            - ключи от browserstack
-            - ключи от neogara
-        7. Попробовать executeScript (при необходимости)
-        8. Тест настройки normal page load strategy
+        
+        
+        1. разобратся почему не запускается checkNeogara если много сайтов + ошибка
+        2. Писать ошибку в лог если нет поля в settings.json
+        3. Тест настройки normal page load strategy
             maxmeimibztzer.info
             maxwesminzpzer.info
             mazxemizer.info
