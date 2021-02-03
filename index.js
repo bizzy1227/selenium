@@ -46,6 +46,9 @@ let updatedSiteQuery = [];
   // }
   startDate = new Date().toISOString();
   console.log(startDate);
+
+  // если указана страна, добавляем +1 к счетчику проверок
+  if (testCountry) additionalСhecks++;
   
   for (let i of siteQuery) {
     let inputURL = '';
@@ -82,7 +85,6 @@ async function processSite(nodeUrl) {
 
   // запуск локально c с разных прокси
   if (testCountry) {
-    additionalСhecks++;
     await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
   }
 
@@ -105,10 +107,10 @@ async function processSite(nodeUrl) {
   // } 
 
   // запуск для теста формы для разных девайсов
-  for (let device of deviceSettings.DEVICES) {
-    additionalСhecks++;
-    await sendModule.checkSend(nodeUrl, false, device, false);
-  }
+  // for (let device of deviceSettings.DEVICES) {
+  //   additionalСhecks++;
+  //   await sendModule.checkSend(nodeUrl, false, device, false);
+  // }
 
   // await checkNeogara(startDate, nodeUrl);
 }
