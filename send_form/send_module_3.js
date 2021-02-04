@@ -29,9 +29,8 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
         
         
         1. разобратся почему не запускается checkNeogara если много сайтов + ошибка
-        2. Писать ошибку в лог если нет поля в settings.json
-        3. Тест настройки normal page load strategy
-        4. Сделать так что бы вспомогательные модули не ломали тест
+        2. Сделать так что бы вспомогательные модули не ломали тест
+        3. Придмать как работать с relink
             maxmeimibztzer.info
             maxwesminzpzer.info
             mazxemizer.info
@@ -91,7 +90,7 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
 }
 
 async function checkForm(driver, inputURL) {
-    console.log('333333333333',inputURL);
+
     // записываем текущую вкладку
     // const originalWindow = await driver.getWindowHandle();
 
@@ -107,7 +106,6 @@ async function checkForm(driver, inputURL) {
     if (form.length > 0) {
         if (!await form[indexElements].isDisplayed()) indexElements = 1;
         await fillForm(driver, inputURL, indexElements);
-        console.log('44444444444',inputURL);
     } 
     else {
         // если нет формы
@@ -146,7 +144,6 @@ async function checkForm(driver, inputURL) {
 }
 
 async function fillForm(driver, inputUrl, i) {
-    console.log('5555555555',inputUrl);
     let oldUrl = inputUrl.href;
     console.log('in fillForm', inputUrl.href);
 
@@ -158,7 +155,6 @@ async function fillForm(driver, inputUrl, i) {
     // inputUrl.search = searchParams.toString();
     // // переходим на ссылку с параметрами дял dev
     // await driver.get(inputUrl.href);
-    console.log('666666666',inputUrl);
 
     let firstname = await driver.findElements(By.name('firstname'));
     await setValue('firstname', firstname.length, firstname, i); 
@@ -184,8 +180,6 @@ async function fillForm(driver, inputUrl, i) {
     // await driver.wait(() => documentInitialised(), 30000);
     
     inputUrl = new URL(await driver.getCurrentUrl());
-    console.log('777777777',inputUrl);
-    console.log('new loooog', inputUrl.href);
     await checkLastUrl(driver, inputUrl.href);
 }
 
@@ -194,15 +188,11 @@ async function checkLastUrl(driver, inputUrl) {
 
     let currentUrl = new URL(inputUrl);
 
-    console.log('1111111',currentUrl);
-
     console.log('crrURL.pathname', currentUrl.pathname);
     console.log('currentUrl.pathname === "/thanks.php"', currentUrl.pathname === '/thanks.php');
     
     if (currentUrl.pathname !== '/thanks.php') {
-        console.log('dont ===');
         countRedirect++;
-        console.log('222222222',currentUrl);
         if (countRedirect < 3) await checkForm(driver, currentUrl);
         else {
             console.log(`The limit (${countRedirect}) of clicks on links has been exceeded`, currentUrl.href);

@@ -29,7 +29,7 @@ let startDate;
 let sendFormErrors = [];
 const promises = [];
 let lastResultObj = {};
-let additionalСhecks = 1;
+let additionalСhecks = 0;
 
 // получаем список сайтов
 let siteQuery = fs.readFileSync("./input.txt", "utf8");
@@ -49,6 +49,9 @@ let updatedSiteQuery = [];
 
   // если указана страна, добавляем +1 к счетчику проверок
   if (testCountry) additionalСhecks++;
+
+  // добавляем количество сайтов для проверки запросов
+  additionalСhecks += deviceSettings.DEVICES.length;
   
   for (let i of siteQuery) {
     let inputURL = '';
@@ -61,31 +64,32 @@ let updatedSiteQuery = [];
     updatedSiteQuery.push(nodeUrl.href);
 
     // делаю selfUpdate для каждого сайта
-    // await selfUpdateModule.selfUpdate(nodeUrl.href);
+    await selfUpdateModule.selfUpdate(nodeUrl.href);
 
     // проверка settings.json на каждом сайте
-    // await checkJsonModule.checkJson(nodeUrl.href);
+    await checkJsonModule.checkJson(nodeUrl.href);
 
     // запуск локально для сбора ошибок консоли
-    await sendModule.checkSend(nodeUrl, true, false, false);
+    // await sendModule.checkSend(nodeUrl, true, false, false);
 
-    // запуск локально c с разных прокси
-    // if (testCountry) {
-    //   await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
-    // }
+    // запуск локально с разных прокси
+    if (testCountry) {
+      await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
+    }
 
     // запуск для теста формы для разных девайсов c browserstack
-    // for (let device of deviceSettings.DEVICES) {
-    //   additionalСhecks++;
-    //   await sendModule.checkSend(nodeUrl, false, device, false);
-    // }
+    for (let device of deviceSettings.DEVICES) {
+      await sendModule.checkSend(nodeUrl, false, device, false);
+    }
 
     // использовать processSite() через promises для паралельного тестирования
     // promises.push(processSite(nodeUrl)); 
-    // await sleep();
+
   }
+  
   // использовать Promise.all(promises) для паралельного тестирования
   // const result = await Promise.all(promises);
+
   let neogaraRes = await checkNeogara(startDate);
   if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form', lastResultObj);
   else console.log('Test send form done', lastResultObj);
