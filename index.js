@@ -75,18 +75,18 @@ let updatedSiteQuery = [];
 async function processSite(nodeUrl) {
 
   // делаю selfUpdate для каждого сайта
-  await selfUpdateModule.selfUpdate(nodeUrl.href);
+  // await selfUpdateModule.selfUpdate(nodeUrl.href);
 
   // проверка settings.json на каждом сайте
-  await checkJsonModule.checkJson(nodeUrl.href);
+  // await checkJsonModule.checkJson(nodeUrl.href);
 
   // запуск локально для сбора ошибок консоли
-  await sendModule.checkSend(nodeUrl, true, false, false);
+  // await sendModule.checkSend(nodeUrl, true, false, false);
 
   // запуск локально c с разных прокси
-  if (testCountry) {
-    await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
-  }
+  // if (testCountry) {
+  //   await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
+  // }
 
   // запуск для теста формы с определенной страны для browserstack
   // if (testCountry) {

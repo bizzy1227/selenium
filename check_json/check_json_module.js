@@ -14,16 +14,18 @@ const checkJson  = async function(inputURL) {
     logger = winston.createLogger({
         level: 'error',
         format: winston.format.json(),
-        defaultMeta: { service: 'browser' },
+        defaultMeta: { service: 'headless browser' },
         transports: [
           new winston.transports.File({ filename: 'check_json_errors.log', level: 'error' }),
         ]
     });
 
+    let nodeUrl = new URL(inputURL);
+
     try {
-        let nodeUrl = new URL(inputURL);
+        
         nodeUrl.pathname = '/settings.json';
-        console.log('in self module', nodeUrl.href);
+        console.log('in json module', nodeUrl.href);
         await driver.get(nodeUrl.href);
 
         let errorObj = {};
@@ -33,6 +35,7 @@ const checkJson  = async function(inputURL) {
         let result = JSON.parse(await elements[0].getText());
         if (!result.pid) errorObj.pid = 'is absent';
         if (!result.group) errorObj.group = 'is absent';
+        if (!result.yandex) errorObj.yandex = 'is absent';
         
         // если объект не пустой, логируем его
         if (Object.keys(errorObj).length !== 0) {
@@ -44,7 +47,7 @@ const checkJson  = async function(inputURL) {
         }
 
     } catch (e) {
-        console.log(e);
+        // console.log('tuuuuuuuuuuuuuuuuut',e);
         logger.log({
             level: 'error',
             message: e.message,
