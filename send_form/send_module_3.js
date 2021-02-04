@@ -36,6 +36,8 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
             maxwesminzpzer.info
             mazxemizer.info
             koduyrurspeha.ru
+
+            https://dailyrfrlesh.ru/b.php
     */
 
     logger = winston.createLogger({
@@ -133,18 +135,18 @@ async function checkForm(driver, inputURL) {
     } 
 }
 
-async function fillForm(driver, URL, i) {
-    let oldUrl = URL.href;
-    console.log('in fillForm');
+async function fillForm(driver, inputUrl, i) {
+    let oldUrl = inputUrl.href;
+    console.log('in fillForm', inputUrl.href);
 
     // добавляем параметры для отправки на dev.neogara
-    let searchParams = URL.searchParams;
+    let searchParams = inputUrl.searchParams;
     searchParams.set('action', 'test');
     searchParams.set('pid', 'kag318');
     searchParams.set('group', '1');
-    URL.search = searchParams.toString();
+    inputUrl.search = searchParams.toString();
     // переходим на ссылку с параметрами дял dev
-    await await driver.get(URL.href);
+    await driver.get(inputUrl.href); 
 
     let firstname = await driver.findElements(By.name('firstname'));
     await setValue('firstname', firstname.length, firstname, i); 
@@ -169,18 +171,19 @@ async function fillForm(driver, URL, i) {
     // }
     // await driver.wait(() => documentInitialised(), 30000);
     
-    await checkLastUrl(driver);
+    inputUrl = new URL(await driver.getCurrentUrl());
+    console.log('new loooog', inputUrl);
+    await checkLastUrl(driver, inputUrl);
 }
 
-async function checkLastUrl(driver) {
+async function checkLastUrl(driver, currentUrl) {
     console.log('in checkLastUrl');
 
-    let currentUrl = await driver.getCurrentUrl();
-    currentUrl = new URL(currentUrl);
     console.log('crrURL.pathname', currentUrl.pathname);
     console.log('currentUrl.pathname === "/thanks.php"', currentUrl.pathname === '/thanks.php');
     
-    if (! currentUrl.pathname === '/thanks.php') {
+    if (currentUrl.pathname !== '/thanks.php') {
+        console.log('dont ===');
         countRedirect++;
         if (countRedirect < 3) await checkForm(driver, currentUrl);
         else {
