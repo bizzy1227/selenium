@@ -62,8 +62,16 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
     }
 
     try {
-
+        // добавляем параметры для отправки на dev.neogara
+        let searchParams = URL.searchParams;
+        searchParams.set('action', 'test');
+        searchParams.set('pid', 'kag318');
+        searchParams.set('group', '1');
+        URL.search = searchParams.toString();
+        // переходим на ссылку с параметрами дял dev
         await driver.get(URL.href);
+
+        // await driver.get(URL.href);
         // driver.sleep(5000);
 
         await checkForm(driver, URL);
@@ -83,6 +91,7 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
 }
 
 async function checkForm(driver, inputURL) {
+    console.log('333333333333',inputURL);
     // записываем текущую вкладку
     // const originalWindow = await driver.getWindowHandle();
 
@@ -98,6 +107,7 @@ async function checkForm(driver, inputURL) {
     if (form.length > 0) {
         if (!await form[indexElements].isDisplayed()) indexElements = 1;
         await fillForm(driver, inputURL, indexElements);
+        console.log('44444444444',inputURL);
     } 
     else {
         // если нет формы
@@ -136,17 +146,19 @@ async function checkForm(driver, inputURL) {
 }
 
 async function fillForm(driver, inputUrl, i) {
+    console.log('5555555555',inputUrl);
     let oldUrl = inputUrl.href;
     console.log('in fillForm', inputUrl.href);
 
-    // добавляем параметры для отправки на dev.neogara
-    let searchParams = inputUrl.searchParams;
-    searchParams.set('action', 'test');
-    searchParams.set('pid', 'kag318');
-    searchParams.set('group', '1');
-    inputUrl.search = searchParams.toString();
-    // переходим на ссылку с параметрами дял dev
-    await driver.get(inputUrl.href); 
+    // // добавляем параметры для отправки на dev.neogara
+    // let searchParams = inputUrl.searchParams;
+    // searchParams.set('action', 'test');
+    // searchParams.set('pid', 'kag318');
+    // searchParams.set('group', '1');
+    // inputUrl.search = searchParams.toString();
+    // // переходим на ссылку с параметрами дял dev
+    // await driver.get(inputUrl.href);
+    console.log('666666666',inputUrl);
 
     let firstname = await driver.findElements(By.name('firstname'));
     await setValue('firstname', firstname.length, firstname, i); 
@@ -172,12 +184,17 @@ async function fillForm(driver, inputUrl, i) {
     // await driver.wait(() => documentInitialised(), 30000);
     
     inputUrl = new URL(await driver.getCurrentUrl());
-    console.log('new loooog', inputUrl);
-    await checkLastUrl(driver, inputUrl);
+    console.log('777777777',inputUrl);
+    console.log('new loooog', inputUrl.href);
+    await checkLastUrl(driver, inputUrl.href);
 }
 
-async function checkLastUrl(driver, currentUrl) {
+async function checkLastUrl(driver, inputUrl) {
     console.log('in checkLastUrl');
+
+    let currentUrl = new URL(inputUrl);
+
+    console.log('1111111',currentUrl);
 
     console.log('crrURL.pathname', currentUrl.pathname);
     console.log('currentUrl.pathname === "/thanks.php"', currentUrl.pathname === '/thanks.php');
@@ -185,6 +202,7 @@ async function checkLastUrl(driver, currentUrl) {
     if (currentUrl.pathname !== '/thanks.php') {
         console.log('dont ===');
         countRedirect++;
+        console.log('222222222',currentUrl);
         if (countRedirect < 3) await checkForm(driver, currentUrl);
         else {
             console.log(`The limit (${countRedirect}) of clicks on links has been exceeded`, currentUrl.href);
