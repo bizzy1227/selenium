@@ -106,7 +106,7 @@ async function processSite(nodeUrl) {
   //    await sendModule.checkSend(nodeUrl, false, device, false);
   // } 
 
-  // запуск для теста формы для разных девайсов
+  // запуск для теста формы для разных девайсов c browserstack
   // for (let device of deviceSettings.DEVICES) {
   //   additionalСhecks++;
   //   await sendModule.checkSend(nodeUrl, false, device, false);
