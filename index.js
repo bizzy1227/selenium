@@ -60,11 +60,32 @@ let updatedSiteQuery = [];
     // создаю массив коректных урлов 
     updatedSiteQuery.push(nodeUrl.href);
 
-    promises.push(processSite(nodeUrl));
+    // делаю selfUpdate для каждого сайта
+    // await selfUpdateModule.selfUpdate(nodeUrl.href);
+
+    // проверка settings.json на каждом сайте
+    // await checkJsonModule.checkJson(nodeUrl.href);
+
+    // запуск локально для сбора ошибок консоли
+    await sendModule.checkSend(nodeUrl, true, false, false);
+
+    // запуск локально c с разных прокси
+    // if (testCountry) {
+    //   await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
+    // }
+
+    // запуск для теста формы для разных девайсов c browserstack
+    // for (let device of deviceSettings.DEVICES) {
+    //   additionalСhecks++;
+    //   await sendModule.checkSend(nodeUrl, false, device, false);
+    // }
+
+    // использовать processSite() через promises для паралельного тестирования
+    // promises.push(processSite(nodeUrl)); 
     // await sleep();
   }
-
-  const result = await Promise.all(promises);
+  // использовать Promise.all(promises) для паралельного тестирования
+  // const result = await Promise.all(promises);
   let neogaraRes = await checkNeogara(startDate);
   if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form', lastResultObj);
   else console.log('Test send form done', lastResultObj);
@@ -88,6 +109,12 @@ async function processSite(nodeUrl) {
   //   await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
   // }
 
+  // запуск для теста формы для разных девайсов c browserstack
+  // for (let device of deviceSettings.DEVICES) {
+  //   additionalСhecks++;
+  //   await sendModule.checkSend(nodeUrl, false, device, false);
+  // }
+
   // запуск для теста формы с определенной страны для browserstack
   // if (testCountry) {
   //   additionalСhecks++;
@@ -104,15 +131,7 @@ async function processSite(nodeUrl) {
   //     'browserstack.geoLocation': testCountry
   //    };
   //    await sendModule.checkSend(nodeUrl, false, device, false);
-  // } 
-
-  // запуск для теста формы для разных девайсов c browserstack
-  // for (let device of deviceSettings.DEVICES) {
-  //   additionalСhecks++;
-  //   await sendModule.checkSend(nodeUrl, false, device, false);
   // }
-
-  // await checkNeogara(startDate, nodeUrl);
 }
 
 async function getProxy(testCountry) {
