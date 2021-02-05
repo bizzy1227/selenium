@@ -1,8 +1,8 @@
 const DEVICES = [
     {
-        'device' : 'iPhone 12 Pro Max',
+        'device' : 'iPhone 7',
         'realMobile' : 'true',
-        'os_version' : '14',
+        'os_version' : '10',
         'browserName' : 'iPhone',
         'name': 'BStack-[NodeJS] Sample Test', // test name
         'build': 'BStack Build Number 1', // CI/CD job or build name
@@ -10,9 +10,9 @@ const DEVICES = [
         'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
     },
     {
-        'device' : 'Samsung Galaxy S9 Plus',
+        'device' : 'Samsung Galaxy Note 8',
         'realMobile' : 'true',
-        'os_version' : '9.0',
+        'os_version' : '7.1',
         'browserName' : 'Android',
         'name': 'BStack-[NodeJS] Sample Test', // test name
         'build': 'BStack Build Number 1', // CI/CD job or build name

@@ -69,10 +69,11 @@ let updatedSiteQuery = [];
     // запуск локально для сбора ошибок консоли
     // await sendModule.checkSend(nodeUrl, true, false, false);
 
-    // запуск локально с разных прокси
+    // запуск локально для сбора ошибок консоли + прокси
     if (testCountry) {
       await sendModule.checkSend(nodeUrl, true, false, await getProxy(testCountry));
     } else {
+      // запуск локально для сбора ошибок консоли без прокси
       await sendModule.checkSend(nodeUrl, true, false, false);
     }
 
