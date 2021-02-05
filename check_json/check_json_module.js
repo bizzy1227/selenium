@@ -33,6 +33,7 @@ const checkJson  = async function(inputURL) {
         // получаю и обрабатываю ответ после selfUpdate
         let elements = await driver.findElements(By.css('pre'));
         let result = JSON.parse(await elements[0].getText());
+        console.log('result', result);
         if (!result.pid) errorObj.pid = 'is absent';
         if (!result.group) errorObj.group = 'is absent';
         if (!result.yandex) errorObj.yandex = 'is absent';
@@ -46,8 +47,10 @@ const checkJson  = async function(inputURL) {
             });
         }
 
+        // возвращаю адрес с которого будет отправлен лид для проверки с неогары
+        if (result.relink) return result.relink;
+
     } catch (e) {
-        // console.log('tuuuuuuuuuuuuuuuuut',e);
         logger.log({
             level: 'error',
             message: e.message,

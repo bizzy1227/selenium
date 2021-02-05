@@ -57,14 +57,12 @@ let updatedSiteQuery = [];
     else inputURL = 'https://' + i;
   
     let nodeUrl = new URL(inputURL);
-    // создаю массив коректных урлов 
-    updatedSiteQuery.push(nodeUrl.href);
 
     // делаю selfUpdate для каждого сайта
     await selfUpdateModule.selfUpdate(nodeUrl.href);
 
     // проверка settings.json на каждом сайте
-    await checkJsonModule.checkJson(nodeUrl.href);
+    let relink = await checkJsonModule.checkJson(nodeUrl.href);
 
     // запуск локально для сбора ошибок консоли
     // await sendModule.checkSend(nodeUrl, true, false, false);
@@ -83,7 +81,12 @@ let updatedSiteQuery = [];
     }
 
     // использовать processSite() через promises для паралельного тестирования
-    // promises.push(processSite(nodeUrl)); 
+    // promises.push(processSite(nodeUrl));
+
+    // перезаписываю nodeUrl на relink, если илд будет отправлен с другого url
+    if (relink) nodeUrl = new URL(relink);
+    // создаю массив коректных урлов 
+    updatedSiteQuery.push(nodeUrl.href);
 
   }
   
@@ -179,15 +182,13 @@ async function checkNeogara(startDate) {
   console.log('in checkNeogara', startDate);
   
   const neogararesults = await parseNeogara.NeogaraGetConversions(startDate);
-  console.log('neogararesults', typeof neogararesults);
-  // console.log(siteQuery);
   
   for (let sqIndex of updatedSiteQuery) {
     lastResultObj[sqIndex] = [];
   }
 
   console.log('lastResultObj empty: ', lastResultObj);
-  console.log('teeeest', neogararesults);
+  console.log('neogararesults', neogararesults);
   
   let count = neogararesults[0].totals.count;
   let total = neogararesults[0].totals.total;
