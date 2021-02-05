@@ -29,7 +29,7 @@ let startDate;
 let sendFormErrors = [];
 const promises = [];
 let lastResultObj = {};
-let additionalСhecks = 0;
+let additionalСhecks = 1;
 
 // получаем список сайтов
 let siteQuery = fs.readFileSync("./input.txt", "utf8");
@@ -46,9 +46,6 @@ let updatedSiteQuery = [];
   // }
   startDate = new Date().toISOString();
   console.log(startDate);
-
-  // если указана страна, добавляем +1 к счетчику проверок
-  if (testCountry) additionalСhecks++;
 
   // добавляем количество сайтов для проверки запросов
   additionalСhecks += deviceSettings.DEVICES.length;
@@ -74,7 +71,9 @@ let updatedSiteQuery = [];
 
     // запуск локально с разных прокси
     if (testCountry) {
-      await sendModule.checkSend(nodeUrl, false, false, await getProxy(testCountry));
+      await sendModule.checkSend(nodeUrl, true, false, await getProxy(testCountry));
+    } else {
+      await sendModule.checkSend(nodeUrl, true, false, false);
     }
 
     // запуск для теста формы для разных девайсов c browserstack
