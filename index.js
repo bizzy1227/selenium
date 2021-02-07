@@ -30,14 +30,16 @@ let sendFormErrors = [];
 const promises = [];
 let lastResultObj = {};
 let additionalСhecks = 1;
-
-// получаем список сайтов
-let siteQuery = fs.readFileSync("./input.txt", "utf8");
-siteQuery = siteQuery.replace(/\r/g, '');
-siteQuery = siteQuery.split('\n');
 let updatedSiteQuery = [];
 
-(async function run() {
+
+
+async function runLocal() {
+
+  // получаем список сайтов
+  let siteQuery = fs.readFileSync("./input.txt", "utf8");
+  siteQuery = siteQuery.replace(/\r/g, '');
+  siteQuery = siteQuery.split('\n');
   
   // настрока времени старта
   // Date.prototype.addHours = function(h) {
@@ -97,7 +99,65 @@ let updatedSiteQuery = [];
   if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form', lastResultObj);
   else console.log('Test send form done', lastResultObj);
 
-})();
+};
+
+runLocal();
+
+const runServer = async function(sites) {
+    console.log('server side sites', sites);
+
+    // настрока времени старта
+    startDate = new Date().toISOString();
+    console.log(startDate);
+
+    // добавляем количество сайтов для проверки запросов
+    additionalСhecks += deviceSettings.DEVICES.length;
+
+    for (let i of sites) {
+      let inputURL = '';
+      // проверка на домен и если надо добавляем https://
+      if (i.match(/^https:\/\//)) inputURL = i;
+      else inputURL = 'https://' + i;
+    
+      let nodeUrl = new URL(inputURL);
+  
+      // делаю selfUpdate для каждого сайта
+      await selfUpdateModule.selfUpdate(nodeUrl.href);
+  
+      // проверка settings.json на каждом сайте
+      let relink = await checkJsonModule.checkJson(nodeUrl.href);
+  
+      // запуск локально для сбора ошибок консоли
+      // await sendModule.checkSend(nodeUrl, true, false, false);
+  
+      // запуск локально для сбора ошибок консоли + прокси
+      if (testCountry) {
+        await sendModule.checkSend(nodeUrl, true, false, await getProxy(testCountry));
+      } else {
+        // запуск локально для сбора ошибок консоли без прокси
+        await sendModule.checkSend(nodeUrl, true, false, false);
+      }
+  
+      // запуск для теста формы для разных девайсов c browserstack
+      for (let device of deviceSettings.DEVICES) {
+        await sendModule.checkSend(nodeUrl, false, device, false);
+      }
+  
+      // использовать processSite() через promises для паралельного тестирования
+      // promises.push(processSite(nodeUrl));
+  
+      // перезаписываю nodeUrl на relink, если илд будет отправлен с другого url
+      if (relink) nodeUrl = new URL(relink);
+      // создаю массив коректных урлов 
+      updatedSiteQuery.push(nodeUrl.href);
+  
+    }
+
+    let neogaraRes = await checkNeogara(startDate);
+    if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form', lastResultObj);
+    else console.log('Test send form done', lastResultObj);
+    
+}
 
 
 async function processSite(nodeUrl) {
@@ -271,6 +331,8 @@ async function checkNeogara(startDate) {
   //   console.log('Has Errors send form');
   // } 
 }
+
+module.exports.runServer = runServer;
 
 // 'browserstack.user' : 'yaroslavsolovev1',
 // 'browserstack.key' : 'Y5QWsrsNx9pjNdHkZnKN'
