@@ -29,13 +29,15 @@ const selfUpdate  = async function(inputURL) {
         // получаю и обрабатываю ответ после selfUpdate
         let elements = await driver.findElements(By.css('pre'));
         let result = await elements[0].getText();
-        if (!result.match(/^Archive downloaded/)) {
+        if (result.match(/^Archive downloaded/)) return true;
+        else {
             console.log('selfUpdate failed!');
             logger.log({
                 level: 'error',
                 message: result,
                 URL: nodeUrl.href
             });
+            return result;
         } 
 
     } catch (e) {
@@ -45,6 +47,7 @@ const selfUpdate  = async function(inputURL) {
             message: e.message,
             URL: nodeUrl.href
         });
+        return e;
     } finally {
         driver.quit();
     }
