@@ -88,7 +88,7 @@ const checkSend  = async function(URL, getWebErr, cp, myProxy) {
             capabilities: capabilities
         });
         driver.quit();
-        mainResult = {error: e.message, capabilities: capabilities, URL: URL};
+        mainResult = {error: e.message, capabilities: capabilities, URL: URL.href};
         return mainResult;
     }
 
