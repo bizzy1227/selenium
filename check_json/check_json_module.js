@@ -45,7 +45,7 @@ const checkJson  = async function(inputURL) {
                 message: errorObj,
                 URL: nodeUrl.href
             });
-            return {hasError: true, result: errorObj};
+            return {hasError: true, result: {err: errorObj, URL: nodeUrl.href}};
         }
 
         // возвращаю адрес с которого будет отправлен лид для проверки с неогары
@@ -59,7 +59,7 @@ const checkJson  = async function(inputURL) {
             message: e.message,
             URL: nodeUrl.href
         });
-        return {hasError: true, result: e};
+        return {hasError: true, result: {err: e.message, URL: nodeUrl.href}};
     } finally {
         driver.quit();
     }

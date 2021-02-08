@@ -47,7 +47,7 @@ const selfUpdate  = async function(inputURL) {
             message: e.message,
             URL: nodeUrl.href
         });
-        return e;
+        return {message: e.message, URL: nodeUrl.href};
     } finally {
         driver.quit();
     }
