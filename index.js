@@ -111,6 +111,8 @@ async function runLocal() {
 runLocal();
 
 const runServer = async function(sites) {
+
+    let mainRespone = {};
     // результаты обработок
     let selfUpdateResult;
     let checkJsonResult;
@@ -173,15 +175,28 @@ const runServer = async function(sites) {
       if (relink) nodeUrl = new URL(relink);
       // создаю массив коректных урлов 
       updatedSiteQuery.push(nodeUrl.href);
+
+      mainRespone[nodeUrl.href] = {
+        selfUpdateResult: selfUpdateResult,
+        checkJsonResult: checkJsonResult,
+        sendFormResult: sendFormResult,
+        neogaraResults: []
+      }
   
     }
 
     console.log('1 selfUpdateResult', selfUpdateResult, '2 checkJsonResult', checkJsonResult, '3 sendFormResult', sendFormResult);
 
     let neogaraRes = await checkNeogara(startDate);
-    if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form', lastResultObj);
-    else console.log('Test send form done', lastResultObj);
-    
+    if (Object.keys(lastResultObj).length !== 0) {
+      for (let key in lastResultObj) {
+        mainRespone[key].neogaraResults = lastResultObj[key];
+      }
+    }
+
+
+    console.log('log response mainRespone', mainRespone);
+    return mainRespone;
 }
 
 
