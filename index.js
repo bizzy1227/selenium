@@ -29,7 +29,7 @@ let startDate;
 let sendFormErrors = [];
 const promises = [];
 let lastResultObj = {};
-let additionalСhecks = 1;
+let additionalСhecks = 2;
 let updatedSiteQuery = [];
 
 
@@ -108,7 +108,7 @@ async function runLocal() {
 
 };
 
-runLocal();
+// runLocal();
 
 const runServer = async function(sites) {
 
@@ -195,7 +195,7 @@ const runServer = async function(sites) {
     }
 
 
-    console.log('log response mainRespone', mainRespone);
+    console.log('log response mainRespone', JSON.stringify(mainRespone));
     return mainRespone;
 }
 
