@@ -29,7 +29,7 @@ let startDate;
 let sendFormErrors = [];
 const promises = [];
 let lastResultObj = {};
-let additionalСhecks = 2;
+let additionalСhecks = 1;
 let updatedSiteQuery = [];
 
 

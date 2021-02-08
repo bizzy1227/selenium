@@ -13,10 +13,10 @@ app.get('/', (request, response) => {
     response.send('Hello from Express!')
 })
 
-app.post('/site', (request, response) => {
+app.post('/site', async (request, response) => {
     console.log('req body', request.body);
-    mainProcc.runServer(request.body.sites);
-    response.send('Hello from site Express!')
+    let res = await mainProcc.runServer(request.body.sites);
+    response.send(res);
 })
 
 app.listen(port, (err) => {
