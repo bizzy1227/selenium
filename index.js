@@ -63,8 +63,15 @@ async function runLocal() {
     // делаю selfUpdate для каждого сайта
     await selfUpdateModule.selfUpdate(nodeUrl.href);
 
-    // проверка settings.json на каждом сайте
-    let relink = await checkJsonModule.checkJson(nodeUrl.href);
+      // проверка settings.json на каждом сайте
+      let localCheckJsonResult = await checkJsonModule.checkJson(nodeUrl.href);
+      let relink;
+      if (!localCheckJsonResult.hasError) {
+        relink = localCheckJsonResult.result;
+        localCheckJsonResult = true;
+      } else {
+        localCheckJsonResult = localCheckJsonResult.result;
+      }
 
     // запуск локально для сбора ошибок консоли
     // await sendModule.checkSend(nodeUrl, true, false, false);
@@ -104,6 +111,11 @@ async function runLocal() {
 runLocal();
 
 const runServer = async function(sites) {
+    // результаты обработок
+    let selfUpdateResult;
+    let checkJsonResult;
+    let sendFormResult = [];
+
     console.log('server side sites', sites);
 
     // настрока времени старта
@@ -122,25 +134,36 @@ const runServer = async function(sites) {
       let nodeUrl = new URL(inputURL);
   
       // делаю selfUpdate для каждого сайта
-      await selfUpdateModule.selfUpdate(nodeUrl.href);
+      selfUpdateResult = await selfUpdateModule.selfUpdate(nodeUrl.href);
   
       // проверка settings.json на каждом сайте
-      let relink = await checkJsonModule.checkJson(nodeUrl.href);
-  
+      checkJsonResult = await checkJsonModule.checkJson(nodeUrl.href);
+      let relink;
+      if (!checkJsonResult.hasError) {
+        relink = checkJsonResult.result;
+        checkJsonResult = true;
+      } else {
+        checkJsonResult = checkJsonResult.result;
+      }
+
       // запуск локально для сбора ошибок консоли
       // await sendModule.checkSend(nodeUrl, true, false, false);
   
       // запуск локально для сбора ошибок консоли + прокси
       if (testCountry) {
-        await sendModule.checkSend(nodeUrl, true, false, await getProxy(testCountry));
+        let test = await sendModule.checkSend(nodeUrl, true, false, await getProxy(testCountry));
+        console.log('test', test);
+        sendFormResult.push(test);
       } else {
+        let test = await sendModule.checkSend(nodeUrl, true, false, false);
+        console.log('test', test);
         // запуск локально для сбора ошибок консоли без прокси
-        await sendModule.checkSend(nodeUrl, true, false, false);
+        sendFormResult.push(test);
       }
   
       // запуск для теста формы для разных девайсов c browserstack
       for (let device of deviceSettings.DEVICES) {
-        await sendModule.checkSend(nodeUrl, false, device, false);
+        sendFormResult.push(await sendModule.checkSend(nodeUrl, false, device, false));
       }
   
       // использовать processSite() через promises для паралельного тестирования
@@ -152,6 +175,8 @@ const runServer = async function(sites) {
       updatedSiteQuery.push(nodeUrl.href);
   
     }
+
+    console.log('1 selfUpdateResult', selfUpdateResult, '2 checkJsonResult', checkJsonResult, '3 sendFormResult', sendFormResult);
 
     let neogaraRes = await checkNeogara(startDate);
     if (Object.keys(lastResultObj).length !== 0) console.log('Has Errors send form', lastResultObj);
