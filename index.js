@@ -113,10 +113,7 @@ async function runLocal() {
 const runServer = async function(sites) {
 
     let mainRespone = {};
-    // результаты обработок
-    let selfUpdateResult;
-    let checkJsonResult;
-    let sendFormResult = [];
+
 
     console.log('server side sites', sites);
 
@@ -128,6 +125,12 @@ const runServer = async function(sites) {
     additionalСhecks += deviceSettings.DEVICES.length;
 
     for (let i of sites) {
+      // результаты обработок
+      let selfUpdateResult;
+      let checkJsonResult;
+      let sendFormResult = [];
+
+
       let inputURL = '';
       // проверка на домен и если надо добавляем https://
       if (i.match(/^https:\/\//)) inputURL = i;
@@ -185,7 +188,7 @@ const runServer = async function(sites) {
   
     }
 
-    console.log('1 selfUpdateResult', selfUpdateResult, '2 checkJsonResult', checkJsonResult, '3 sendFormResult', sendFormResult);
+    // console.log('1 selfUpdateResult', selfUpdateResult, '2 checkJsonResult', checkJsonResult, '3 sendFormResult', sendFormResult);
 
     let neogaraRes = await checkNeogara(startDate);
     if (Object.keys(lastResultObj).length !== 0) {
